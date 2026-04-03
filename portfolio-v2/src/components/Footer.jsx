@@ -37,7 +37,7 @@ function Footer() {
         <div className="footer__col">
           <p className="footer__col-title">PAGES</p>
           <button onClick={() => navigate('/project')}>Project</button>
-          <button onClick={() => navigate('/about')}>Asobiba</button>
+          <button onClick={() => navigate('/asobiba')}>Asobiba</button>
           <button onClick={() => navigate('/about')}>About</button>
         </div>
 
@@ -50,7 +50,7 @@ function Footer() {
         <div className="footer__col footer__col--right">
           <p className="footer__col-title">CONNECT</p>
           <a href="https://www.linkedin.com/in/yurino-murakami-047175318" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="https://www.instagram.com/lilyzvillage.ca/" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="https://www.instagram.com/lilyzvillage.design/" target="_blank" rel="noopener noreferrer">Instagram</a>
           <button onClick={() => navigate('/contact')}>Email</button>
         </div>
 

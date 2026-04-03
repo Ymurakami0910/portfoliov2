@@ -138,8 +138,8 @@ function Home() {
       {/* Splash */}
       {showSplash && (
         <div className="splash">
-          <div className="splash__logo">Yuri's Studio</div>
-          <div className="splash__sub">Brand Designer</div>
+          <div className="splash__logo">Lilyzvillage</div>
+          <div className="splash__sub">Brand & Marketing</div>
         </div>
       )}
 
@@ -176,11 +176,11 @@ function Home() {
               <br />
               cross borders.
             </h1>
-            <p className="hero__sub">
+            {/* <p className="hero__sub">
               Brand identity and marketing strategy for businesses
               <br />
               that want to be memorable.
-            </p>
+            </p> */}
           </div>
 
           {/* Profile */}
@@ -203,10 +203,10 @@ function Home() {
       </section>
 
       {/* PROJECTS */}
-      <section className="projects">
+      <section className="projects" id="projects">
         <div className="container">
           <div className="projects__header fadeIn">
-            <p className="label">Selected Work</p>
+            <p className="label">Project</p>
           </div>
 
           <div className="projects__grid">
@@ -216,7 +216,7 @@ function Home() {
                 className={`project-card fadeIn project-card--${
                   i % 2 === 0 ? "tall" : "short"
                 }`}
-                onClick={() => navigate(`/project/${project.slug}`)}
+                onClick={() => navigate(`${project.slug}`)}
               >
                 <div
                   className="project-card__image"

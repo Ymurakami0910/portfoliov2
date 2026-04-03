@@ -3,8 +3,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
+import ScrollToTop from './components/ScrollToTop';
 import Layout from './components/Layout';
 import Home from './pages/Home';
+import Asobiba from './pages/Asobiba';
 import MLB from './pages/projects/MLB';
 
 // Uncomment as you build:
@@ -22,14 +24,12 @@ gsap.registerPlugin(ScrollTrigger);
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="project/mlb" element={<MLB />} />
-          {/* <Route path="project/kissa-tanpopo" element={<KissaTanpopo />} /> */}
-          {/* <Route path="project" element={<Projects />} /> */}
-          {/* <Route path="about" element={<About />} /> */}
-          {/* <Route path="contact" element={<Contact />} /> */}
+          <Route path="asobiba" element={<Asobiba />} />
+          <Route path="/mlb" element={<MLB />} />
         </Route>
       </Routes>
     </Router>

@@ -36,7 +36,7 @@ function MLB() {
 
       {/* ——— Hero Thumb ——— */}
       <ProjectThumb
-        imageSrc="https://via.placeholder.com/1440x600/1E4397/FFFFFF?text=Hits+Home+Campaign"
+        imageSrc="https://lilyzvillage.com/KissaStore-DmijIweP.png"
         imageAlt="MLB Hits Home Campaign"
         title="Hits Home Campaign"
         label="MLB – AMA Competition 2nd place"
