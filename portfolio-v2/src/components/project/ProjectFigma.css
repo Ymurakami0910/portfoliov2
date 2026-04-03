@@ -1,0 +1,22 @@
+.project-figma {
+  padding: 5rem 0;
+}
+
+.project-figma__label {
+  margin-bottom: 1.5rem;
+}
+
+.project-figma__frame {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  border: 0.031rem solid rgba(26, 26, 46, 0.1);
+  box-shadow: 0 0.5rem 2rem rgba(26, 26, 46, 0.08);
+}
+
+.project-figma__frame iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}

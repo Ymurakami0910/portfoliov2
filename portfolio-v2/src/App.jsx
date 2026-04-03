@@ -5,13 +5,13 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 
 import Layout from './components/Layout';
 import Home from './pages/Home';
+import MLB from './pages/projects/MLB';
 
-// Future pages — uncomment as you build them:
+// Uncomment as you build:
+// import KissaTanpopo from './pages/projects/KissaTanpopo';
 // import Projects from './pages/Projects';
 // import About from './pages/About';
 // import Contact from './pages/Contact';
-// import MLBPage from './pages/projects/MLB';
-// import KissaTanpopo from './pages/projects/KissaTanpopo';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -25,12 +25,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          {/* Uncomment as you build: */}
+          <Route path="project/mlb" element={<MLB />} />
+          {/* <Route path="project/kissa-tanpopo" element={<KissaTanpopo />} /> */}
           {/* <Route path="project" element={<Projects />} /> */}
           {/* <Route path="about" element={<About />} /> */}
           {/* <Route path="contact" element={<Contact />} /> */}
-          {/* <Route path="project/mlb" element={<MLBPage />} /> */}
-          {/* <Route path="project/kissa-tanpopo" element={<KissaTanpopo />} /> */}
         </Route>
       </Routes>
     </Router>

@@ -1,0 +1,10 @@
+.mlb-page {
+  padding-left: 6rem; /* space for the side nav */
+  min-height: 100vh;
+}
+
+@media (max-width: 48rem) {
+  .mlb-page {
+    padding-left: 0;
+  }
+}
