@@ -1,0 +1,138 @@
+/* ============================================
+   YURI'S STUDIO v2 — Global Styles
+   Fonts: Playfair Display + DM Sans
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap');
+
+/* ——— CSS Variables ——— */
+:root {
+
+  --blue-dark:   #1E4397;
+  --blue-light:  #E8EEFF;
+  --blue-line: rgba(152, 172, 235, 0.25);
+  --pink-light:  #FDEEF4;
+  --ink:         #27272e;
+  --muted:       #5A5A7A;
+  --paper:       #FAFAF8;
+  --surface:     #F0EFEA;
+  --white:       #ffffff;
+  --grid-size:   26px;
+  --container:   1200px;
+  --radius:      12px;
+}
+
+/* ——— Reset ——— */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  color: var(--ink);
+  background-color: var(--paper);
+  background-image:
+    repeating-linear-gradient(to bottom,
+      transparent 25px, var(--blue-line) 26px,
+      transparent 27px, transparent 51px,
+      var(--blue-line) 52px, transparent 53px,
+      transparent 77px, var(--blue-line) 78px,
+      transparent 79px, transparent 103px,
+      var(--blue-line) 104px, transparent 105px,
+      transparent 129px, var(--blue-line) 130px),
+    repeating-linear-gradient(to right,
+      transparent 25px, var(--blue-line) 26px,
+      transparent 27px, transparent 51px,
+      var(--blue-line) 52px, transparent 53px,
+      transparent 77px, var(--blue-line) 78px,
+      transparent 79px, transparent 103px,
+      var(--blue-line) 104px, transparent 105px,
+      transparent 129px, var(--blue-line) 130px);
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+button { cursor: pointer; font-family: inherit; }
+
+/* ——— Typography ——— */
+h1, h2, h3 { font-family: 'Playfair Display', serif; line-height: 1.1; }
+h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 700; color: var(--blue-dark); }
+h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700; color: var(--blue-dark); }
+h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); font-weight: 400; color: var(--ink); }
+p  { font-size: 1rem; line-height: 1.7; font-weight: 300; color: var(--ink); }
+
+.label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ——— Layout ——— */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 60px;
+}
+
+/* ——— Chip / Tag ——— */
+.chip {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin: 2px;
+  background: var(--blue-light);
+  color: var(--blue-dark);
+}
+
+/* ——— Buttons ——— */
+.btn-primary {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 24px;
+  border-radius: 6px;
+  background: var(--blue);
+  color: var(--white);
+  border: 1.5px solid var(--blue);
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-primary:hover { background: var(--blue-dark); border-color: var(--blue-dark); transform: translateY(-1px); }
+
+.btn-outline {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 24px;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--blue);
+  border: 1.5px solid var(--blue);
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-outline:hover { background: var(--blue-light); transform: translateY(-1px); }
+
+/* ——— Fade In animation ——— */
+.fadeIn {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fadeIn.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ——— Responsive ——— */
+@media (max-width: 768px) {
+  .container { padding: 0 24px; }
+  h1 { font-size: 2.2rem; }
+}
