@@ -1,15 +1,36 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import gsap from 'gsap';
 import './Footer.css';
 
-
-import TanukiImg from '../assets/tanuki-footer.svg'
+import TanukiImg from '../assets/tanuki-footer.svg';
+import AirplaneImg from '../assets/airplane.svg';
 
 function Footer() {
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const isMobile = window.innerWidth < 768;
+    const distance = isMobile ? '120vw' : '130vw';
+
+    gsap.fromTo('.footer__airplane--1',
+      { x: '-20vw', y: '0vh' },
+      { x: distance, y: '-3vh', rotation: 3, duration: 10, ease: 'power1.inOut', repeat: -1 }
+    );
+
+    gsap.fromTo('.footer__airplane--2',
+      { x: '-30vw', y: '2vh' },
+      { x: distance, y: '-1vh', rotation: 2, duration: 14, ease: 'power1.inOut', repeat: -1, delay: 3 }
+    );
+  }, []);
+
   return (
     <footer className="footer" id="pageFooter">
+
+      {/* Airplanes */}
+      <img src={AirplaneImg} alt="" className="footer__airplane footer__airplane--1" />
+      <img src={AirplaneImg} alt="" className="footer__airplane footer__airplane--2" />
+
       <div className="footer__main container">
 
         {/* Left — Pages */}
@@ -22,7 +43,7 @@ function Footer() {
 
         {/* Center — Tanuki */}
         <div className="footer__tanuki">
-            <img src={TanukiImg} alt="Tanuki" />
+          <img src={TanukiImg} alt="Tanuki mascot" />
         </div>
 
         {/* Right — Connect */}
@@ -48,6 +69,7 @@ function Footer() {
           In Japanese folklore, they're known for their adaptability and clever nature. Just like me.
         </span>
       </div>
+
     </footer>
   );
 }

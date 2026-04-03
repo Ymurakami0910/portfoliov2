@@ -58,11 +58,11 @@
 .header__link::after {
   content: '';
   position: absolute;
-  bottom: -2px;
+  bottom: -0.125rem;
   left: 0;
   width: 0;
-  height: 1.5px;
-  background: var(--blue);
+  height: 0.094rem;
+  background: var(--blue-dark);
   transition: width 0.2s;
 }
 
@@ -142,3 +142,25 @@
   .header__nav { display: none; }
   .header__burger { display: flex; }
 }
+@keyframes fadeInOverlay {
+  0%   { opacity: 0; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeInLinks {
+  0%   { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.header__overlay.open {
+  animation: fadeInOverlay 0.3s ease forwards;
+}
+
+.header__overlay-nav a {
+  opacity: 0;
+  animation: fadeInLinks 0.4s ease forwards;
+}
+
+.header__overlay-nav a:nth-child(1) { animation-delay: 0.15s; }
+.header__overlay-nav a:nth-child(2) { animation-delay: 0.25s; }
+.header__overlay-nav a:nth-child(3) { animation-delay: 0.35s; }

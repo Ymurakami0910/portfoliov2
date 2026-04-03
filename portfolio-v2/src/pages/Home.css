@@ -1,5 +1,5 @@
 /* ============================================
-   HOME PAGE — Hero, Clouds, Projects
+   HOME PAGE — Hero, Clouds, Projects (rem)
    ============================================ */
 
 /* ——— Splash ——— */
@@ -20,12 +20,12 @@
   font-size: 3rem;
   font-weight: 700;
   color: white;
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
 }
 
 .splash__sub {
   font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 300;
   color: rgba(255,255,255,0.6);
   letter-spacing: 0.2em;
@@ -53,60 +53,60 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 40px;
+  gap: 2.5rem;
   position: relative;
   z-index: 2;
-  padding-top: 60px;
-  padding-bottom: 120px;
+  padding-top: 3.75rem;
+  padding-bottom: 7.5rem;
 }
 
 /* Text */
-.hero__text { flex: 1; max-width: 600px; }
+.hero__text { flex: 1; max-width: 37.5rem; }
 
 .hero__headline {
-  opacity: 0; /* animated by GSAP */
-  margin-bottom: 24px;
+  opacity: 0;
+  margin-bottom: 1.5rem;
 }
 
 .hero__sub {
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: 300;
-  line-height: 1.7;
+  line-height: 1.2;
   color: var(--ink);
-  opacity: 0; /* animated by GSAP */
-  max-width: 480px;
+  opacity: 0;
+  max-width: 40rem;
 }
 
 /* Profile */
 .hero__profile {
-  flex: 0 0 40%; /* 👈 force 40% width */
+  flex: 0 0 40%;
   display: flex;
   justify-content: center;
 }
 
 .hero__gif {
   width: 100%;
-  max-width: 420px;
-  transform: scale(1.2); /* 👈 trims visual whitespace */
+  max-width: 26.25rem;
+  transform: scale(1.2);
 }
 
 .hero__gif-placeholder {
-  width: 280px;
-  height: 320px;
+  width: 17.5rem;
+  height: 20rem;
   background: rgba(43, 92, 230, 0.06);
-  border: 1.5px dashed rgba(43, 92, 230, 0.2);
-  border-radius: 12px;
+  border: 0.094rem dashed rgba(43, 92, 230, 0.2);
+  border-radius: 0.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 13px;
+  font-size: 0.8125rem;
   color: var(--muted);
 }
 
 /* Clouds */
 .hero__clouds {
-  bottom: -20%;   /* 👈 move UP into composition */
-  height: 320px; /* optional: slightly bigger */
+  bottom: -20%;
+  height: 20rem;
   position: absolute;
   left: 0;
   width: 100%;
@@ -127,36 +127,36 @@
   object-fit: cover;
 }
 
-.hero__cloud--2 { 
-   bottom: 40px; /* slightly higher layering */
-   opacity: 0.6;
-  }
+.hero__cloud--2 {
+  bottom: 2.5rem;
+  opacity: 0.6;
+}
 
-/* Cloud placeholders — replace with actual cloud PNGs */
+/* Cloud placeholders */
 .cloud-placeholder {
-  height: 160px;
+  height: 10rem;
   background: linear-gradient(to top, rgba(220,230,255,0.8), transparent);
   border-radius: 50% 50% 0 0;
 }
 .cloud-placeholder--wide { width: 100%; }
-.cloud-placeholder--narrow { width: 100%; height: 100px; opacity: 0.5; }
+.cloud-placeholder--narrow { width: 100%; height: 6.25rem; opacity: 0.5; }
 
 /* Scroll indicator */
 .hero__scroll {
   position: absolute;
-  bottom: 18%;
+  bottom: 5%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 3;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  gap: 6px;
+  gap: 1rem;
 }
 
 .hero__scroll-label {
   font-family: 'DM Sans', sans-serif;
-  font-size: 11px;
+  font-size: 0.6875rem;
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -167,38 +167,38 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
+  gap: 0.2rem;
 }
 
 .hero__paws img {
-  width: 18px;
-  margin-bottom: 6px;
-  transform: rotate(180deg); /* 👈 makes arrow point DOWN */
-  opacity: 0.6;
+  width: 2rem;
+  margin-bottom: 0.5rem;
+  transform: rotate(180deg);
+  opacity: 0.7;
 }
 
 .paw-step {
-  font-size: 16px;
+  font-size: 0.875rem;
   display: block;
   line-height: 1.2;
 }
 
 /* ——— Projects Section ——— */
 .projects {
-  padding: 80px 0 120px;
+  padding: 5rem 0 7.5rem;
   position: relative;
   z-index: 2;
 }
 
 .projects__header {
-  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
 }
 
 /* Masonry-style grid */
 .projects__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+  gap: 1.5rem;
   align-items: start;
 }
 
@@ -206,20 +206,22 @@
 .project-card {
   cursor: pointer;
   transition: transform 0.3s ease;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .project-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-0.25rem);
 }
 
-.project-card--tall .project-card__image { height: 420px; }
-.project-card--short .project-card__image { height: 320px; }
+.project-card--tall .project-card__image  { height: 26.25rem; }
+.project-card--short .project-card__image { height: 20rem; }
 
 .project-card__image {
   width: 100%;
   border-radius: var(--radius);
   overflow: hidden;
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
   position: relative;
 }
 
@@ -240,14 +242,14 @@
 }
 
 .project-card__info {
-  padding: 0 4px;
+  padding: 0 0.25rem;
 }
 
 .project-card__meta {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
 }
 
 .project-card__date {
@@ -264,27 +266,21 @@
 
 /* ——— Responsive ——— */
 @media (max-width: 900px) {
-  .hero__inner { flex-direction: column; text-align: center; padding-bottom: 200px; }
+  .hero__inner { flex-direction: column; text-align: center; padding-bottom: 12.5rem; }
   .hero__sub { max-width: 100%; }
   .projects__grid { grid-template-columns: 1fr; }
   .project-card--tall .project-card__image,
-  .project-card--short .project-card__image { height: 280px; }
+  .project-card--short .project-card__image { height: 17.5rem; }
 }
 
 @media (max-width: 768px) {
-  .hero__gif { width: 220px; }
-  .hero__gif-placeholder { width: 200px; height: 240px; }
-  .hero__scroll { bottom: 200px; }
+  .hero__gif { width: 13.75rem; }
+  .hero__gif-placeholder { width: 12.5rem; height: 15rem; }
+  .hero__scroll { bottom: 12.5rem; }
 }
 
-/* 🔥 CRITICAL FIX — prevents invisible cards */
+/* Prevent invisible cards */
 .fadeIn {
   opacity: 1 !important;
   transform: none !important;
-}
-
-/* Optional polish */
-.project-card {
-  opacity: 1;
-  transform: translateY(0);
 }

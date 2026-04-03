@@ -1,138 +1,164 @@
-.footer {
-  background: #1E4397;
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-}
+/* ============================================
+   FOOTER
+   ============================================ */
 
-/* ——— Main 3-column layout ——— */
-.footer__main {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  padding-top: 60px;
-  padding-bottom: 0;
-  position: relative;
-  z-index: 2;
-}
-
-/* ——— Columns ——— */
-.footer__col {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding-bottom: 60px;
-}
-
-.footer__col--right {
-  text-align: right;
-  align-items: flex-end;
-}
-
-.footer__col-title {
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 4px;
-}
-
-.footer__col a,
-.footer__col button {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 15px;
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.85);
-  background: none;
-  border: none;
-  padding: 0;
-  text-align: inherit;
-  cursor: pointer;
-  transition: color 0.2s;
-  text-decoration: none;
-}
-
-.footer__col a:hover,
-.footer__col button:hover {
-  color: white;
-}
-
-/* ——— Tanuki center ——— */
-.footer__tanuki {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  flex: 1;
-}
-
-.footer__tanuki img {
-  height: 300px;
-  width: auto;
-  object-fit: contain;
-}
-
-.footer__tanuki-placeholder {
-  font-size: 120px;
-  line-height: 1;
-  opacity: 0.4;
-}
-
-/* ——— Bottom bar ——— */
-.footer__bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 16px;
-  padding-bottom: 16px;
-  border-top: 0.5px solid rgba(255, 255, 255, 0.15);
-  position: relative;
-  z-index: 2;
-}
-
-.footer__bottom p {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.6);
-}
-
-/* ——— Tanuki note ——— */
-.footer__tanuki-note {
-  display: flex;
-  gap: 16px;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  background: rgba(0, 0, 0, 0.15);
-  position: relative;
-  z-index: 2;
-}
-
-.footer__tanuki-q {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.7);
-  white-space: nowrap;
-}
-
-.footer__tanuki-a {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.55);
-  font-style: italic;
-}
-
-/* ——— Responsive ——— */
-@media (max-width: 768px) {
-  .footer__main {
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
-    padding-top: 40px;
+   .footer {
+    background:var(--blue-dark);
+    position: relative;
+    overflow: hidden;
+    width: 100%;
   }
-  .footer__col { align-items: center; text-align: center; }
-  .footer__col--right { align-items: center; text-align: center; }
-  .footer__tanuki-note { flex-direction: column; gap: 4px; }
-  .footer__bottom { flex-direction: column; gap: 8px; text-align: center; }
-}
+  
+  /* ——— Airplane ——— */
+  .footer__airplane {
+    position: absolute;
+    width: 7rem;
+    height: auto;
+    opacity: 0.8;
+    z-index: 1;
+    pointer-events: none;
+    top: 10%;
+  }
+  
+  /* ——— Main 3-column layout ——— */
+  .footer__main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;     /* ← change from flex-end to center */
+    padding-top: 1rem;
+    padding-bottom: 0;
+    position: relative;
+    z-index: 2;
+    min-height: 22rem;
+    overflow: hidden;  /* ← add this */
+  }
+  
+  /* ——— Columns ——— */
+  .footer__col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-bottom: 3.75rem;
+  }
+  
+  .footer__col--right {
+    text-align: right;
+    align-items: flex-end;
+  }
+  
+  .footer__col-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 0.25rem;
+  }
+  
+  .footer__col a,
+  .footer__col button {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.85);
+    background: none;
+    border: none;
+    padding: 0;
+    text-align: inherit;
+    cursor: pointer;
+    transition: color 0.2s;
+    text-decoration: none;
+  }
+  
+  .footer__col a:hover,
+  .footer__col button:hover {
+    color: white;
+  }
+  
+  /* ——— Tanuki center ——— */
+  .footer__tanuki {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex: 1;
+    animation: tanukiFloat 3s ease-in-out infinite;
+  }
+
+  .footer__tanuki img {
+    height: 50rem;           /* ← much bigger */
+    width: auto;
+    object-fit: contain;
+    margin-bottom: -20rem;   /* ← crop the bottom */
+  }
+  
+  @keyframes tanukiFloat {
+    0%   { transform: translateY(0rem); }
+    50%  { transform: translateY(-0.75rem); }
+    100% { transform: translateY(0rem); }
+  }
+  
+  /* ——— Bottom bar ——— */
+  .footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-top: 0.031rem solid rgba(255, 255, 255, 0.15);
+    position: relative;
+    z-index: 2;
+  }
+  
+  .footer__bottom p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.6);
+  }
+  
+  /* ——— Tanuki note ——— */
+  .footer__tanuki-note {
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    background: rgba(0, 0, 0, 0.15);
+    position: relative;
+    z-index: 2;
+  }
+  
+  .footer__tanuki-q {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+    white-space: nowrap;
+  }
+  
+  .footer__tanuki-a {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.55);
+    font-style: italic;
+  }
+  
+  /* ——— Responsive ——— */
+  @media (max-width: 48rem) {
+    .footer__main {
+      flex-direction: column;
+      align-items: center;
+      gap: 2.5rem;
+      padding-top: 2.5rem;
+      min-height: auto;
+    }
+    .footer__col { align-items: center; text-align: center; padding-bottom: 0; }
+    .footer__col--right { align-items: center; text-align: center; }
+    .footer__tanuki { padding-bottom: 0; }
+    .footer__tanuki img { height: 12rem; }
+    .footer__tanuki-note { flex-direction: column; gap: 0.25rem; }
+    .footer__bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+    .footer__airplane { width: 3rem; }
+  }
