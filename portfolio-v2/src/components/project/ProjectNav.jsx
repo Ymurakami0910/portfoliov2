@@ -4,8 +4,23 @@ import './ProjectNav.css';
 
 const ProjectNav = ({ sections }) => {
   const [active, setActive] = useState(sections[0]?.id || '');
+  const [hidden, setHidden] = useState(false);
   const navigate = useNavigate();
 
+  // Hide when footer is visible
+  useEffect(() => {
+    const footer = document.getElementById('pageFooter');
+    if (!footer) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setHidden(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    observer.observe(footer);
+    return () => observer.disconnect();
+  }, []);
+
+  // Highlight active section
   useEffect(() => {
     const observers = sections.map(({ id }) => {
       const el = document.getElementById(id);
@@ -26,6 +41,8 @@ const ProjectNav = ({ sections }) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
+
+  if (hidden) return null;
 
   return (
     <nav className="project-nav">

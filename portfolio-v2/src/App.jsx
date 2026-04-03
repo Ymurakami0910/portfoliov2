@@ -8,12 +8,7 @@ import Layout from './components/Layout';
 import Home from './pages/Home';
 import Asobiba from './pages/Asobiba';
 import MLB from './pages/projects/MLB';
-
-// Uncomment as you build:
-// import KissaTanpopo from './pages/projects/KissaTanpopo';
-// import Projects from './pages/Projects';
-// import About from './pages/About';
-// import Contact from './pages/Contact';
+import About from "./pages/About"
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -29,7 +24,9 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="asobiba" element={<Asobiba />} />
-          <Route path="/mlb" element={<MLB />} />
+          <Route path="about" element={<About />} />
+          <Route path="mlb" element={<MLB />} />
+
         </Route>
       </Routes>
     </Router>
