@@ -4,6 +4,7 @@ import ProjectThumb from "../../components/project/ProjectThumb";
 import ProjectText from "../../components/project/ProjectText";
 import VisualGrid from "../../components/project/VisualGrid";
 import ProjectLightbox from "../../components/project/ProjectLightbox";
+import CampaignOverview from '../../components/project/CampaignOverview';
 import PostItCard from "../../components/PostItCard";
 import LinkedInEmbed from "../../components/LinkedInEmbed";
 import "./MLB.css";
@@ -16,10 +17,10 @@ import ReportImg from "../../assets/mlb/report.png";
 // import Seeker2      from '../../assets/mlb/seeker2.jpg';
 import OOH1         from '../../assets/mlb/ooh1.jpg';
 import OOH2         from '../../assets/mlb/ooh2.jpg';
-// import Microsite1   from '../../assets/mlb/microsite1.jpg';
-// import Microsite2   from '../../assets/mlb/microsite2.jpg';
-// import Microsite3   from '../../assets/mlb/microsite3.jpg';
-// import Microsite4   from '../../assets/mlb/microsite4.jpg';
+import Microsite1   from '../../assets/mlb/microsite1.jpg';
+import Microsite2   from '../../assets/mlb/microsite2.jpg';
+import Microsite3   from '../../assets/mlb/microsite3.jpg';
+import Microsite4   from '../../assets/mlb/microsite4.jpg';
 // import Social1      from '../../assets/mlb/social1.jpg';
 import PersonaImg from "../../assets/mlb/persona.png";
 import TargetImg from "../../assets/mlb/target-audience.png";
@@ -87,34 +88,31 @@ const ALL_VISUALS = [
       "Transit interior. The continuous physical presence extends the campaign into commuter spaces throughout the city.",
   },
   // 6,7,8,9 — Microsite
-  {
-    src: null,
-    color: "#D4C5C0",
-    alt: "Interactive city map from the Homebase microsite",
-    caption:
-      "Interactive city map personalised by location, surfacing local MLB games, bars showing games, open practices, and nearby players.",
-  },
-  {
-    src: null,
-    color: "#D0C0BB",
-    alt: "City hub with Scene, Games, Players tabs",
-    caption:
-      "City hub with tabbed navigation across Scene, Games, and Players — making local baseball tangible and discoverable.",
-  },
-  {
-    src: null,
-    color: "#CCC0D0",
-    alt: "Player baseball card with flip mechanic",
-    caption:
-      "Player baseball cards with a flip mechanic, connecting fans to local roster members in a format that feels familiar.",
-  },
-  {
-    src: null,
-    color: "#C8BEC8",
-    alt: "Personalised email newsletter mockup",
-    caption:
-      "Personalised email newsletter delivering local game schedules and player highlights based on city.",
-  },
+// 6,7,8,9 — Microsite
+{
+  src: Microsite1,
+  color: '#D4C5C0',
+  alt: 'Hits Home microsite hero — players cropped in baseball shapes with the campaign title',
+  caption: 'Microsite hero page. Players from across the league displayed in signature baseball shapes — circle, diamond, and home plate — setting the visual language of the campaign.',
+},
+{
+  src: Microsite2,
+  color: '#D0C0BB',
+  alt: 'Interactive USA map showing MLB team locations by state with filter panel',
+  caption: 'Major City Map. An interactive USA map lets users filter by MLB team or stadium, with California highlighted showing all four California teams — SF Giants, Dodgers, Angels, and Padres.',
+},
+{
+  src: Microsite3,
+  color: '#CCC0D0',
+  alt: 'Pub search tab showing bar listings alongside a dark city map with baseball pin markers',
+  caption: 'Where They Connect. The pub search tab surfaces sports bars showing live MLB games nearby, paired with a real-time city map — each pin marking a place to watch with your city.',
+},
+{
+  src: Microsite4,
+  color: '#C8BEC8',
+  alt: 'Player cards showing all-time legends Tom Glavine and Don Wilson alongside current players Aaron Judge and Paul Skenes',
+  caption: 'Players — Past and Present. Baseball cards connect fans to all-time legends from their city alongside current stars born nearby, making the roster feel personal and local.',
+},
   // 10 — Social ad
   {
     src: null,
@@ -213,7 +211,7 @@ function MLB() {
 
       {/* CONTEXT */}
       <ProjectText
-        id="The Problem"
+        id="context"
         label="The Problem"
         title="Baseball is losing its youngest audience"
       >
@@ -238,7 +236,7 @@ function MLB() {
 
       {/* PROBLEM */}
       <ProjectText
-        id="Target Audience"
+        id="problem"
         label="The Target Audience"
         title="Connection Seekers"
       >
@@ -279,6 +277,7 @@ function MLB() {
           in-person moment.
         </p>
       </ProjectText>
+      <CampaignOverview />
 
       {/* STAGE 1 */}
       <ProjectText
@@ -364,7 +363,7 @@ function MLB() {
       >
         <p>
           The team placed 2nd at the 2026 AMA International Collegiate
-          Conference, competing against 1010+ schools across the US and Canada, judged
+          Conference, competing against 110+ schools across the US and Canada, judged
           by MLB and Deloitte executives.
         </p>
         <p>
