@@ -4,7 +4,7 @@ import ProjectThumb from "../../components/project/ProjectThumb";
 import ProjectText from "../../components/project/ProjectText";
 import VisualGrid from "../../components/project/VisualGrid";
 import ProjectLightbox from "../../components/project/ProjectLightbox";
-import CampaignOverview from '../../components/project/CampaignOverview';
+import CampaignOverview from "../../components/project/CampaignOverview";
 import PostItCard from "../../components/PostItCard";
 import LinkedInEmbed from "../../components/LinkedInEmbed";
 import "./MLB.css";
@@ -12,20 +12,24 @@ import "./MLB.css";
 // ——— Replace nulls with real imports when assets are ready ———
 // import MLBThumb     from '../../assets/mlb/thumb.jpg';
 import ReportImg from "../../assets/mlb/report.png";
-// import ContextGraph from '../../assets/mlb/context-graph.jpg';
-// import Seeker1      from '../../assets/mlb/seeker1.jpg';
-// import Seeker2      from '../../assets/mlb/seeker2.jpg';
-import OOH1         from '../../assets/mlb/ooh1.jpg';
-import OOH2         from '../../assets/mlb/ooh2.jpg';
-import Microsite1   from '../../assets/mlb/microsite1.jpg';
-import Microsite2   from '../../assets/mlb/microsite2.jpg';
-import Microsite3   from '../../assets/mlb/microsite3.jpg';
-import Microsite4   from '../../assets/mlb/microsite4.jpg';
-// import Social1      from '../../assets/mlb/social1.jpg';
+
 import PersonaImg from "../../assets/mlb/persona.png";
 import TargetImg from "../../assets/mlb/target-audience.png";
+
+import OOH1 from "../../assets/mlb/ooh1.jpg";
+import OOH2 from "../../assets/mlb/ooh2.jpg";
+
+import Microsite1 from "../../assets/mlb/microsite1.jpg";
+import Microsite2 from "../../assets/mlb/microsite2.jpg";
+import Microsite3 from "../../assets/mlb/microsite3.jpg";
+import Microsite4 from "../../assets/mlb/microsite4.jpg";
+
 import StoryboardMateo from "../../assets/mlb/storyboard-mateo.png";
 import StoryboardSarah from "../../assets/mlb/storyboard-sarah.png";
+
+import Outcome1 from "../../assets/mlb/outcome1.jpg";
+import Outcome2 from "../../assets/mlb/outcome2.jpg";
+
 import EricaImg from "../../assets/mlb/Erica.jpg";
 import TeamPhoto from "../../assets/mlb/team.jpg";
 
@@ -88,31 +92,34 @@ const ALL_VISUALS = [
       "Transit interior. The continuous physical presence extends the campaign into commuter spaces throughout the city.",
   },
   // 6,7,8,9 — Microsite
-// 6,7,8,9 — Microsite
-{
-  src: Microsite1,
-  color: '#D4C5C0',
-  alt: 'Hits Home microsite hero — players cropped in baseball shapes with the campaign title',
-  caption: 'Microsite hero page. Players from across the league displayed in signature baseball shapes — circle, diamond, and home plate — setting the visual language of the campaign.',
-},
-{
-  src: Microsite2,
-  color: '#D0C0BB',
-  alt: 'Interactive USA map showing MLB team locations by state with filter panel',
-  caption: 'Major City Map. An interactive USA map lets users filter by MLB team or stadium, with California highlighted showing all four California teams — SF Giants, Dodgers, Angels, and Padres.',
-},
-{
-  src: Microsite3,
-  color: '#CCC0D0',
-  alt: 'Pub search tab showing bar listings alongside a dark city map with baseball pin markers',
-  caption: 'Where They Connect. The pub search tab surfaces sports bars showing live MLB games nearby, paired with a real-time city map — each pin marking a place to watch with your city.',
-},
-{
-  src: Microsite4,
-  color: '#C8BEC8',
-  alt: 'Player cards showing all-time legends Tom Glavine and Don Wilson alongside current players Aaron Judge and Paul Skenes',
-  caption: 'Players — Past and Present. Baseball cards connect fans to all-time legends from their city alongside current stars born nearby, making the roster feel personal and local.',
-},
+  {
+    src: Microsite1,
+    color: "#D4C5C0",
+    alt: "Hits Home microsite hero — players cropped in baseball shapes with the campaign title",
+    caption:
+      "Microsite hero page. Players from across the league displayed in signature baseball shapes — circle, diamond, and home plate — setting the visual language of the campaign.",
+  },
+  {
+    src: Microsite2,
+    color: "#D0C0BB",
+    alt: "Interactive USA map showing MLB team locations by state with filter panel",
+    caption:
+      "Major City Map. An interactive USA map lets users filter by MLB team or stadium, with California highlighted showing all four California teams — SF Giants, Dodgers, Angels, and Padres.",
+  },
+  {
+    src: Microsite3,
+    color: "#CCC0D0",
+    alt: "Pub search tab showing bar listings alongside a dark city map with baseball pin markers",
+    caption:
+      "Where They Connect. The pub search tab surfaces sports bars showing live MLB games nearby, paired with a real-time city map — each pin marking a place to watch with your city.",
+  },
+  {
+    src: Microsite4,
+    color: "#C8BEC8",
+    alt: "Player cards showing all-time legends Tom Glavine and Don Wilson alongside current players Aaron Judge and Paul Skenes",
+    caption:
+      "Players — Past and Present. Baseball cards connect fans to all-time legends from their city alongside current stars born nearby, making the roster feel personal and local.",
+  },
   // 10 — Social ad
   {
     src: null,
@@ -136,13 +143,32 @@ const ALL_VISUALS = [
     caption:
       "Storyboard 2: Video Hero Ads (Sarah). Sarah wakes up to the same routine. She stumbles across MLB content, goes to a game with a friend, catches a foul ball, and passes the moment on to a child beside her.",
   },
+  // 13, 14 — Outcome final panels
+  {
+    src: Outcome1,
+    color: "#1E3A6E",
+    alt: "Sarah and friends celebrating at Dodger Stadium, arms raised in the crowd",
+    caption:
+      "The moment the campaign is built for — Connection Seekers at the game, present, loud, and belonging.",
+  },
+  {
+    src: Outcome2,
+    color: "#1A3060",
+    alt: "Campaign key visual — Sarah at the stadium with Hits Home script overlay",
+    caption:
+      "MLB doesn't just \"Hits Different\" — it Hits Home. The campaign's closing image, used for the final presentation",
+  },
 ];
 
 // Visual groups
 const REPORT_ITEMS = [ALL_VISUALS[0]];
+
 const CONTEXT_ITEMS = [ALL_VISUALS[1]];
+
 const SEEKER_ITEMS = [ALL_VISUALS[2], ALL_VISUALS[3]];
+
 const OOH_ITEMS = [ALL_VISUALS[4], ALL_VISUALS[5]];
+
 const MICROSITE_ITEMS = [
   ALL_VISUALS[6],
   ALL_VISUALS[7],
@@ -150,7 +176,10 @@ const MICROSITE_ITEMS = [
   ALL_VISUALS[9],
 ];
 const SOCIAL_ITEMS = [ALL_VISUALS[10]];
+
 const STORYBOARD_ITEMS = [ALL_VISUALS[11], ALL_VISUALS[12]];
+
+const OUTCOME_ITEMS = [ALL_VISUALS[13], ALL_VISUALS[14]];
 
 const LINKEDIN_EMBED = `<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7441914687803473920" height="570" width="504" frameborder="0" allowfullscreen="" title="Embedded post from Erica Halvorsen about the BCITMA AMA Case Competition"></iframe>`;
 
@@ -363,14 +392,21 @@ function MLB() {
       >
         <p>
           The team placed 2nd at the 2026 AMA International Collegiate
-          Conference, competing against 110+ schools across the US and Canada, judged
-          by MLB and Deloitte executives.
+          Conference, competing against 110+ schools across the US and Canada,
+          judged by MLB and Deloitte executives.
         </p>
         <p>
           The projected campaign outcomes included a 25% increase in total
           broadcast viewership and a 231% ROI for MLB over 18 months.
         </p>
       </ProjectText>
+
+      <VisualGrid
+        items={OUTCOME_ITEMS}
+        allVisuals={ALL_VISUALS}
+        onOpen={openLightbox}
+        caption="Campaign closing visuals — the emotional payoff of the full 18-month strategy."
+      />
 
       {/* CREDIBILITY */}
       <section className="mlb-credibility" id="credibility">

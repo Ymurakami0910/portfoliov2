@@ -47,8 +47,11 @@ function Footer() {
 
         {/* Left — Pages */}
         <div className="footer__col">
-          <p className="footer__col-title">PAGES</p>
-          <button onClick={() => navigate('/project')}>Project</button>
+          <p className="footer__col-title">Projects</p>
+          <button onClick={() => navigate('/project/mlb')}>Hits Home Campaign</button>
+          <span/>
+          <p className="footer__col-title">Pages</p>
+          <button onClick={() => navigate('/')}>Home</button>
           <button onClick={() => navigate('/asobiba')}>Asobiba</button>
           <button onClick={() => navigate('/about')}>About</button>
         </div>
@@ -70,7 +73,7 @@ function Footer() {
 
       {/* Bottom bar */}
       <div className="footer__bottom container">
-        <p>lilyzvillage@2026</p>
+        <p>@lilyzvillage 2026</p>
         <p>Let's be a Tomodachi!</p>
       </div>
 

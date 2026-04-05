@@ -145,20 +145,57 @@
     font-style: italic;
   }
   
-  /* ——— Responsive ——— */
-  @media (max-width: 48rem) {
-    .footer__main {
-      flex-direction: column;
-      align-items: center;
-      gap: 2.5rem;
-      padding-top: 2.5rem;
-      min-height: auto;
-    }
-    .footer__col { align-items: center; text-align: center; padding-bottom: 0; }
-    .footer__col--right { align-items: center; text-align: center; }
-    .footer__tanuki { padding-bottom: 0; }
-    .footer__tanuki img { height: 12rem; }
-    .footer__tanuki-note { flex-direction: column; gap: 0.25rem; }
-    .footer__bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
-    .footer__airplane { width: 3rem; }
+/* ——— Tablet ——— */
+@media (max-width: 64rem) {
+  .footer__main {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    padding-top: 2.5rem;
+    min-height: auto;
   }
+
+  .footer__col {
+    align-items: center;
+    text-align: center;
+    padding-bottom: 2rem;
+  }
+
+  .footer__col--right {
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer__tanuki img {
+    height: 28rem;
+    margin-bottom: -8rem;
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .footer__tanuki-note {
+    flex-direction: column;
+    gap: 0.25rem;
+    text-align: center;
+  }
+}
+
+/* ——— Mobile ——— */
+@media (max-width: 48rem) {
+  .footer__main {
+    padding-top: 2rem;
+  }
+
+  .footer__tanuki img {
+    height: 18rem;
+    margin-bottom: -2.5rem;
+  }
+
+  .footer__airplane {
+    width: 5rem;
+  }
+}
