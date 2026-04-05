@@ -1,0 +1,19 @@
+.linkedin-embed {
+  width: 100%;
+}
+
+.linkedin-embed__caption {
+  margin-bottom: 1rem;
+}
+
+.linkedin-embed__container {
+  width: 100%;
+  max-width: 37rem;
+  margin: 0 auto;
+}
+
+/* Make LinkedIn's iframe responsive */
+.linkedin-embed__container iframe {
+  width: 100% !important;
+  border-radius: 0.75rem;
+}

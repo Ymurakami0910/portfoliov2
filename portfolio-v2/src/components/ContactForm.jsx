@@ -1,4 +1,5 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 import emailjs from 'emailjs-com';
 import './ContactForm.css';
 
@@ -21,8 +22,10 @@ const ContactForm = () => {
     );
   };
 
+
+
   return (
-    <div className="contact-form">
+    <div className="contact-form" id="email">
       <div className="contact-form__header">
         <p className="label contact-form__label">Get in touch</p>
         <h2 className="contact-form__title">Let's work together</h2>
@@ -32,8 +35,8 @@ const ContactForm = () => {
         </p>
         <div className="contact-form__links">
           <a href="https://www.linkedin.com/in/yurino-murakami-047175318" target="_blank" rel="noopener noreferrer" className="contact-form__link">LinkedIn ↗</a>
-          <a href="https://www.instagram.com/lilyzvillage.ca/" target="_blank" rel="noopener noreferrer" className="contact-form__link">Instagram ↗</a>
-          <a href="/Resume.pdf" target="_blank" rel="noopener noreferrer" className="contact-form__link">Resume ↗</a>
+          <a href="https://www.instagram.com/lilyzvillage.design/" target="_blank" rel="noopener noreferrer" className="contact-form__link">Instagram ↗</a>
+          <a href="/Yurino-Murakami-Resume[Creative].pdf" target="_blank" rel="noopener noreferrer" className="contact-form__link">Resume ↗</a>
         </div>
       </div>
 

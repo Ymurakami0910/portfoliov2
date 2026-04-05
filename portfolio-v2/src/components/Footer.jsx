@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useRef, useState, useEffect } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import './Footer.css';
 
@@ -9,6 +9,18 @@ import AirplaneImg from '../assets/airplane.svg';
 function Footer() {
   const navigate = useNavigate();
 
+  const handleProjectClick = () => {
+    if (window.location.pathname === '/about') {
+      document.getElementById('email')?.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      navigate('/about');
+      setTimeout(() => {
+        document.getElementById('email')?.scrollIntoView({ behavior: 'smooth' });
+      }, 300);
+    }
+  };
+
+  
   useEffect(() => {
     const isMobile = window.innerWidth < 768;
     const distance = isMobile ? '120vw' : '130vw';
@@ -51,7 +63,7 @@ function Footer() {
           <p className="footer__col-title">CONNECT</p>
           <a href="https://www.linkedin.com/in/yurino-murakami-047175318" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           <a href="https://www.instagram.com/lilyzvillage.design/" target="_blank" rel="noopener noreferrer">Instagram</a>
-          <button onClick={() => navigate('/contact')}>Email</button>
+          <button onClick={handleProjectClick}>Email</button>
         </div>
 
       </div>

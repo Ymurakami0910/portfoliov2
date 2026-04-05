@@ -1,12 +1,25 @@
 import React from 'react';
-import './ProjectThumb.css';
 import MaskSvg from '../../assets/mask.svg';
+import './ProjectThumb.css';
 
-const ProjectThumb = ({ imageSrc, imageAlt, title, label, year, role }) => {
+const ProjectThumb = ({ imageSrc, imageAlt, title, label, year, role, thumbColor }) => {
   return (
     <section className="project-thumb" id="overview">
-      <div className="project-thumb__image" style={{ WebkitMaskImage: `url(${MaskSvg})`, maskImage: `url(${MaskSvg})` }}>
-        <img src={imageSrc} alt={imageAlt} />
+      <div
+        className="project-thumb__image"
+        style={{
+          WebkitMaskImage: `url(${MaskSvg})`,
+          maskImage: `url(${MaskSvg})`,
+          WebkitMaskSize: '100% 100%',
+          maskSize: '100% 100%',
+          WebkitMaskRepeat: 'no-repeat',
+          maskRepeat: 'no-repeat',
+        }}
+      >
+        {imageSrc
+          ? <img src={imageSrc} alt={imageAlt} />
+          : <div className="project-thumb__placeholder" style={{ background: thumbColor || '#C5C9D9' }} />
+        }
       </div>
       <div className="container project-thumb__info">
         <div className="project-thumb__meta">
