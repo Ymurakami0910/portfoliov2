@@ -66,7 +66,7 @@
 }
 
 .project-text__body p {
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 300;
   line-height: 1.8;
   color: var(--ink);
@@ -76,7 +76,10 @@
 .project-text__body p:last-child {
   margin-bottom: 0;
 }
-
+.project-text__body strong {
+  font-weight: 500;
+  color: var(--ink);
+} 
 .project-text__body h3 {
   font-family: 'Playfair Display', serif;
   font-size: 1.2rem;

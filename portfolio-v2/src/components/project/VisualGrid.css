@@ -1,0 +1,92 @@
+/* ============================================
+   VISUAL GRID — reusable project visual component
+   ============================================ */
+
+.visual-grid {
+  padding: 2rem 0 3rem;
+}
+
+.visual-grid__grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.visual-grid__grid--1 { grid-template-columns: 1fr; }
+.visual-grid__grid--2 { grid-template-columns: repeat(2, 1fr); }
+.visual-grid__grid--3 { grid-template-columns: repeat(3, 1fr); }
+.visual-grid__grid--4 { grid-template-columns: repeat(2, 1fr); }
+
+.visual-grid__item {
+  position: relative;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  aspect-ratio: var(--aspect, 16 / 10);
+  display: block;
+  width: 100%;
+  background: none;
+}
+
+.visual-grid__item img,
+.visual-grid__placeholder {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.visual-grid__item:hover img,
+.visual-grid__item:hover .visual-grid__placeholder {
+  transform: scale(1.03);
+}
+
+.visual-grid__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(26, 26, 46, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+}
+
+.visual-grid__overlay span {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s;
+  letter-spacing: 0.05em;
+}
+
+.visual-grid__item:hover .visual-grid__overlay {
+  background: rgba(26, 26, 46, 0.4);
+}
+
+.visual-grid__item:hover .visual-grid__overlay span {
+  opacity: 1;
+}
+
+.visual-grid__caption {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-top: 1rem;
+}
+
+/* ——— Responsive ——— */
+@media (max-width: 60rem) {
+  .visual-grid__grid--3 { grid-template-columns: repeat(2, 1fr); }
+  .visual-grid__grid--4 { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 48rem) {
+  .visual-grid__grid--2,
+  .visual-grid__grid--3 { grid-template-columns: 1fr; }
+}
