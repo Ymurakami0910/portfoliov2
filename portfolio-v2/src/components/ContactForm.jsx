@@ -36,7 +36,7 @@ const ContactForm = () => {
         <div className="contact-form__links">
           <a href="https://www.linkedin.com/in/yurino-murakami-047175318" target="_blank" rel="noopener noreferrer" className="contact-form__link">LinkedIn ↗</a>
           <a href="https://www.instagram.com/lilyzvillage.design/" target="_blank" rel="noopener noreferrer" className="contact-form__link">Instagram ↗</a>
-          <a href="/Yurino-Murakami-Resume[Creative].pdf" target="_blank" rel="noopener noreferrer" className="contact-form__link">Resume ↗</a>
+          <a href="/portfoliov2/Yurino-Murakami-Resume[Creative].pdf" target="_blank" rel="noopener noreferrer" className="contact-form__link">Resume ↗</a>
         </div>
       </div>
 
