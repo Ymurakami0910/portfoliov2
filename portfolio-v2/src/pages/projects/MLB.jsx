@@ -4,13 +4,14 @@ import ProjectThumb from "../../components/project/ProjectThumb";
 import ProjectText from "../../components/project/ProjectText";
 import VisualGrid from "../../components/project/VisualGrid";
 import ProjectLightbox from "../../components/project/ProjectLightbox";
+import ResearchStats from '../../components/project/ResearchStats';
 import CampaignOverview from "../../components/project/CampaignOverview";
 import PostItCard from "../../components/PostItCard";
 import LinkedInEmbed from "../../components/LinkedInEmbed";
 import "./MLB.css";
 
-// ——— Replace nulls with real imports when assets are ready ———
-// import MLBThumb     from '../../assets/mlb/thumb.jpg';
+
+import MLBThumb     from '../../assets/mlb/thumb.jpg';
 import ReportImg from "../../assets/mlb/report.png";
 
 import PersonaImg from "../../assets/mlb/persona.png";
@@ -198,7 +199,7 @@ function MLB() {
 
       {/* THUMB */}
       <ProjectThumb
-        imageSrc={null}
+        imageSrc={MLBThumb}
         imageAlt="Hits Home Campaign overview showing campaign materials"
         title="Hits Home"
         label="MLB × AMA International Collegiate Case Competition"
@@ -255,13 +256,15 @@ function MLB() {
           a way to make baseball genuinely relevant to the next generation.
         </p>
       </ProjectText>
-
+{/* 
       <VisualGrid
         items={CONTEXT_ITEMS}
         allVisuals={ALL_VISUALS}
         onOpen={openLightbox}
         caption="Research summary showing Gen Z sports engagement data. Baseball ranks fourth among Gen Z, with an average viewer age of 57."
-      />
+      /> */}
+
+      <ResearchStats/>
 
       {/* PROBLEM */}
       <ProjectText
@@ -306,7 +309,10 @@ function MLB() {
           in-person moment.
         </p>
       </ProjectText>
+
       <CampaignOverview />
+
+
 
       {/* STAGE 1 */}
       <ProjectText
@@ -625,6 +631,19 @@ function MLB() {
                 >
                   RockWater. (2022). Why only 61% of Gen Z watches sports, and
                   how to future-proof sports media.
+                </a>
+              </li>
+              <li>
+                Deloitte. (2025). Digital Media Trends. Gen Z social media and
+                content consumption data.
+              </li>
+              <li>
+                <a
+                  href="https://amberstudio.com/docs/Impact-of-Gen-Z-on-the-Gaming-Market.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Amber Studio. (2021). Impact of Gen Z on the gaming market.
                 </a>
               </li>
               <li>

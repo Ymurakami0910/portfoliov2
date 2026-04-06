@@ -48,7 +48,7 @@ function Footer() {
         {/* Left — Pages */}
         <div className="footer__col">
           <p className="footer__col-title">Projects</p>
-          <button onClick={() => navigate('/project/mlb')}>Hits Home Campaign</button>
+          <button onClick={() => navigate('/mlb')}>Hits Home Campaign</button>
           <span/>
           <p className="footer__col-title">Pages</p>
           <button onClick={() => navigate('/')}>Home</button>

@@ -8,6 +8,7 @@ import Cloud1 from "../assets/cloud1.png";
 import Cloud2 from "../assets/cloud2.png";
 import ProfileGif from "../assets/video.gif";
 import StepSvg from "../assets/step.svg";
+import MLBThumb from '../assets/mlb/Thumb.jpg'
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,7 +19,7 @@ const projects = [
     date: "Fall 2025 – Winter 2026",
     title: "Hits Home Campaign",
     slug: "mlb",
-    image: null,
+    image: MLBThumb,
     color: "#D9C5C0",
   },
   {

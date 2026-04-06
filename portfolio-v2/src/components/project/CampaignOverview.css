@@ -2,9 +2,51 @@
    CAMPAIGN OVERVIEW — tabs, stages, schedule
    ============================================ */
 
-.campaign-overview {
-  padding: 3rem 0 5rem;
-}
+   .campaign-overview {
+    background: var(--white);
+    border-radius: 0.75rem;
+    padding: 3rem 3.5rem;
+    position: relative;
+    box-shadow:
+      0 0.125rem 0.25rem rgba(26, 26, 46, 0.04),
+      0 0.5rem 2rem rgba(26, 26, 46, 0.06);
+  
+    /* Subtle ruled lines like paper */
+    background-image:
+      repeating-linear-gradient(
+        to bottom,
+        transparent 1.5rem,
+        rgba(152, 172, 235, 0.15) 1.5rem,
+        rgba(152, 172, 235, 0.15) 1.5625rem,
+        transparent 1.5625rem
+      );
+    background-size: 100% 1.625rem;
+  }
+
+
+   
+  /* Left margin line */
+  .campaign-overview::before {
+  content: '';
+  position: absolute;
+  top: -0.5rem;
+  left: 1rem;
+  right: 1rem;
+  height: 0.5rem;
+  background: var(--white);
+  border-radius: 0.25rem 0.25rem 0 0;
+  box-shadow: 0 -0.125rem 0.25rem rgba(26, 26, 46, 0.04);
+  }
+
+  .campaign-overview::after{
+    content: '';
+    position: absolute;
+    top: 1rem;
+    bottom: 1rem;
+    left: 4rem;
+    width: 0.063rem;
+    background: rgba(217, 79, 122, 0.2);
+  }
 
 /* ——— Header ——— */
 .co-header {

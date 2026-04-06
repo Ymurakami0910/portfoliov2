@@ -273,12 +273,60 @@
   .project-card--short .project-card__image { height: 17.5rem; }
 }
 
-@media (max-width: 768px) {
-  .hero__gif { width: 13.75rem; }
-  .hero__gif-placeholder { width: 12.5rem; height: 15rem; }
-  .hero__scroll { bottom: 12.5rem; }
-}
 
+/* ——— Mobile ——— */
+@media (max-width: 768px) {
+
+  .hero{
+    min-height: 80vh;
+    padding: 0;
+  }
+  .hero__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 5rem;
+    padding-bottom: 12rem;
+    gap: 1.5rem;
+  }
+
+  .hero__text {
+    text-align: left;
+    flex: none;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero__profile {
+    flex: none;
+    position: absolute;
+    top: 100%;      /* ← align with scroll text */
+    right: -10%;       /* ← right side */
+    width: 70%;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+
+  .hero__gif {
+    max-width: 100%;
+    transform: scale(1);
+  }
+
+  .hero__scroll {
+    left: 1.5rem;
+    bottom: 2rem;  
+    transform: none;
+  }
+
+
+  .hero__clouds {
+    bottom: 0;
+    height: 18rem;
+  }
+
+  .hero__cloud--2 {
+    opacity: 0.8;
+  }
+}
 /* Prevent invisible cards */
 .fadeIn {
   opacity: 1 !important;
