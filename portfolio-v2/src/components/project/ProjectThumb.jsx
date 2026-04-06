@@ -1,5 +1,4 @@
 import React from 'react';
-import MaskSvg from '../../assets/mask.svg';
 import './ProjectThumb.css';
 
 const ProjectThumb = ({ imageSrc, imageAlt, title, label, year, role, thumbColor }) => {
@@ -7,14 +6,6 @@ const ProjectThumb = ({ imageSrc, imageAlt, title, label, year, role, thumbColor
     <section className="project-thumb" id="overview">
       <div
         className="project-thumb__image"
-        style={{
-          WebkitMaskImage: `url(${MaskSvg})`,
-          maskImage: `url(${MaskSvg})`,
-          WebkitMaskSize: '100% 100%',
-          maskSize: '100% 100%',
-          WebkitMaskRepeat: 'no-repeat',
-          maskRepeat: 'no-repeat',
-        }}
       >
         {imageSrc
           ? <img src={imageSrc} alt={imageAlt} />

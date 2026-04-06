@@ -8,6 +8,7 @@ import Layout from './components/Layout';
 import Home from './pages/Home';
 import Asobiba from './pages/Asobiba';
 import MLB from './pages/projects/MLB';
+import Charisma from './pages/projects/charisma';
 import About from "./pages/About"
 
 import 'slick-carousel/slick/slick.css';
@@ -26,7 +27,7 @@ function App() {
           <Route path="asobiba" element={<Asobiba />} />
           <Route path="about" element={<About />} />
           <Route path="mlb" element={<MLB />} />
-
+          <Route path="charisma-cafe" element={<Charisma />} />
         </Route>
       </Routes>
     </Router>

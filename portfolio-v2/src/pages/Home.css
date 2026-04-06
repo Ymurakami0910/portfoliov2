@@ -258,9 +258,9 @@
 
 .project-card__title {
   font-family: 'Playfair Display', serif;
-  font-size: 1.3rem;
-  font-weight: 400;
-  color: var(--ink);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(-ink);
   line-height: 1.2;
 }
 

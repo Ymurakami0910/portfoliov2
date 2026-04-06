@@ -54,15 +54,7 @@ const ALL_VISUALS = [
     caption:
       "Custom report template built in Microsoft Word. Our 3 months of work came together, selected as one of the top 11 universities among all submissions.",
   },
-  // 1 — Context graph
-  {
-    src: null,
-    color: "#C5C9D9",
-    alt: "One-page data summary showing Gen Z sports engagement statistics",
-    caption:
-      "Data summary page. Only 35% of Gen Z identify as casual MLB fans, ranking baseball fourth behind the NFL, NBA, and college football among their generation.",
-  },
-  // 2,3 — Connection Seekers
+  // 1,2 — Connection Seekers
   {
     src: PersonaImg,
     color: "#C8C0D4",
@@ -77,7 +69,7 @@ const ALL_VISUALS = [
     caption:
       "80% of Gen Z report feeling lonely in the past 12 months — more than any other generation, despite being the most digitally connected (GWI, 2024).",
   },
-  // 4,5 — OOH
+  // 3,4 — OOH
   {
     src: OOH1,
     color: "#C5CAD9",
@@ -92,7 +84,7 @@ const ALL_VISUALS = [
     caption:
       "Transit interior. The continuous physical presence extends the campaign into commuter spaces throughout the city.",
   },
-  // 6,7,8,9 — Microsite
+  // 5,6,7,8, — Microsite
   {
     src: Microsite1,
     color: "#D4C5C0",
@@ -121,7 +113,7 @@ const ALL_VISUALS = [
     caption:
       "Players — Past and Present. Baseball cards connect fans to all-time legends from their city alongside current stars born nearby, making the roster feel personal and local.",
   },
-  // 10 — Social ad
+  // 9 — Social ad
   {
     src: null,
     color: "#CCBFB8",
@@ -129,7 +121,7 @@ const ALL_VISUALS = [
     caption:
       "Social ad creative targeting Connection Seekers in digital spaces, driving awareness toward the Homebase microsite.",
   },
-  // 11,12 — Storyboards
+  // 10,11 — Storyboards
   {
     src: StoryboardMateo,
     color: "#1E3A6E",
@@ -144,7 +136,7 @@ const ALL_VISUALS = [
     caption:
       "Storyboard 2: Video Hero Ads (Sarah). Sarah wakes up to the same routine. She stumbles across MLB content, goes to a game with a friend, catches a foul ball, and passes the moment on to a child beside her.",
   },
-  // 13, 14 — Outcome final panels
+  // 12, 13 — Outcome final panels
   {
     src: Outcome1,
     color: "#1E3A6E",
@@ -164,23 +156,21 @@ const ALL_VISUALS = [
 // Visual groups
 const REPORT_ITEMS = [ALL_VISUALS[0]];
 
-const CONTEXT_ITEMS = [ALL_VISUALS[1]];
+const SEEKER_ITEMS = [ALL_VISUALS[1], ALL_VISUALS[2]];
 
-const SEEKER_ITEMS = [ALL_VISUALS[2], ALL_VISUALS[3]];
-
-const OOH_ITEMS = [ALL_VISUALS[4], ALL_VISUALS[5]];
+const OOH_ITEMS = [ALL_VISUALS[3], ALL_VISUALS[4]];
 
 const MICROSITE_ITEMS = [
+  ALL_VISUALS[5],
   ALL_VISUALS[6],
   ALL_VISUALS[7],
   ALL_VISUALS[8],
-  ALL_VISUALS[9],
 ];
-const SOCIAL_ITEMS = [ALL_VISUALS[10]];
+const SOCIAL_ITEMS = [ALL_VISUALS[9]];
 
-const STORYBOARD_ITEMS = [ALL_VISUALS[11], ALL_VISUALS[12]];
+const STORYBOARD_ITEMS = [ALL_VISUALS[11], ALL_VISUALS[10]];
 
-const OUTCOME_ITEMS = [ALL_VISUALS[13], ALL_VISUALS[14]];
+const OUTCOME_ITEMS = [ALL_VISUALS[12], ALL_VISUALS[13]];
 
 const LINKEDIN_EMBED = `<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7441914687803473920" height="570" width="504" frameborder="0" allowfullscreen="" title="Embedded post from Erica Halvorsen about the BCITMA AMA Case Competition"></iframe>`;
 
@@ -194,10 +184,7 @@ function MLB() {
   };
 
   return (
-    <div className="mlb-page">
-      <ProjectNav sections={NAV_SECTIONS} />
-
-      {/* THUMB */}
+    <section>
       <ProjectThumb
         imageSrc={MLBThumb}
         imageAlt="Hits Home Campaign overview showing campaign materials"
@@ -207,6 +194,10 @@ function MLB() {
         role="Visual Director — BCIT Marketing Association Case Team"
         thumbColor="#1E3A6E"
       />
+    <div className="mlb-page">
+      <ProjectNav sections={NAV_SECTIONS} />
+
+      {/* THUMB */}
 
       {/* OVERVIEW */}
       <ProjectText
@@ -776,6 +767,7 @@ function MLB() {
         />
       )}
     </div>
+    </section>
   );
 }
 

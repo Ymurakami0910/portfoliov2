@@ -27,7 +27,7 @@ const projects = [
     label: "Charisma Cafe – FLUI Hackathon",
     date: "Winter 2026",
     title: "Charisma Cafe Rebranding",
-    slug: "kissa-tanpopo",
+    slug: "Charisma-cafe",
     image: null,
     color: "#C5C9D9",
   },
