@@ -1,74 +1,58 @@
-/* ============================================
-   PROJECT BELT — scrolling image strip
-   ============================================ */
-
 .project-belt {
+  width: 100%;
+  overflow: hidden;
   padding: 1.25rem 0;
 }
 
 .project-belt__track {
   display: flex;
+  flex-direction: row;
   width: max-content;
   align-items: center;
-  gap: 0;
 }
 
 .project-belt__item {
-  margin: 0;
-  padding: 0;
   flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 43.75rem;
+  height: 25rem;
 }
 
 .project-belt__item img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   display: block;
 }
 
-/* ——— Desktop ——— */
-.project-belt--desktop {
-  overflow: hidden;
-  width: 100%;
-}
+/* ——— Mobile — stack vertically ——— */
+@media (max-width: 48rem) {
+  .project-belt__track {
+    flex-direction: column;
+    width: 100%;
+  }
 
-.project-belt--desktop .project-belt__item {
-  max-width: 43.75rem;
-  height: 25rem;
-}
+  /* Only show first 4 images on mobile — hide duplicates */
+  .project-belt__item:nth-child(n+5) {
+    display: none;
+  }
 
-.project-belt--desktop .project-belt__item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+  .project-belt__item {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    padding: 0 1.5rem;
+    box-sizing: border-box;
+    opacity: 0;
+    transform: translateY(1.5rem);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
 
-/* ——— Mobile ——— */
-.project-belt--mobile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.25rem;
-  width: 100%;
-  overflow: visible;
-}
+  .project-belt__item.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-.project-belt--mobile .project-belt__track {
-  flex-direction: column;
-  width: 100%;
-}
-
-.project-belt--mobile .project-belt__item {
-  max-width: 100%;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
-  padding: 0 0.625rem;
-  box-sizing: border-box;
-}
-
-.project-belt--mobile .project-belt__item img {
-  width: 100%;
-  height: 100%;
+  .project-belt__item img {
+    border-radius: 0.75rem;
+  }
 }

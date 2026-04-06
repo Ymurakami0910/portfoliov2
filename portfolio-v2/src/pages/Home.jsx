@@ -139,7 +139,7 @@ function Home() {
       {/* Splash */}
       {showSplash && (
         <div className="splash">
-          <div className="splash__logo">Lilyzvillage</div>
+          <div className="splash__logo">Yurino Murakami</div>
           <div className="splash__sub">Brand & Marketing</div>
         </div>
       )}

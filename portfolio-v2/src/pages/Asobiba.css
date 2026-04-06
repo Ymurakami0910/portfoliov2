@@ -2,123 +2,162 @@
    ASOBIBA — Under Construction Page
    ============================================ */
 
-.asobiba {
-  min-height: 100vh;
-  padding-top: 5rem;
-}
-
-/* ——— Hero ——— */
-.asobiba__hero {
-  padding-bottom: 0;
-  overflow: hidden;
-}
-
-.asobiba__hero-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 3rem;
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-  min-height: 70vh;
-}
-
-.asobiba__text {
-  flex: 1;
-  max-width: 34rem;
-}
-
-.asobiba__label {
-  margin-bottom: 1rem;
-  display: block;
-}
-
-.asobiba__title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(3rem, 8vw, 6rem);
-  font-weight: 700;
-  color: var(--blue-dark);
-  line-height: 1;
-  margin-bottom: 1.5rem;
-}
-
-.asobiba__sub {
-  font-size: 1rem;
-  font-weight: 300;
-  line-height: 1.7;
-  color: var(--muted);
-  margin-bottom: 2rem;
-  max-width: 28rem;
-}
-
-.asobiba__btn {
-  cursor: pointer;
-}
-
-/* ——— Tanuki ——— */
-.asobiba__tanuki {
-  flex-shrink: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.asobiba__tanuki img {
-  width: 22rem;
-  height: auto;
-  object-fit: contain;
-}
-
-.asobiba__tanuki-placeholder {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  font-size: 8rem;
-  line-height: 1;
-}
-
-.asobiba__hardhat {
-  font-size: 8rem;
-  position: absolute;
-  top: 10rem;
-  left: 70%;
-  transform: translateX(-40%);
-  display: block;
-  transform-origin: bottom center;
-}
-
-.asobiba__tanuki img{
-
-}
-
-
-
-
-
-/* ——— Belt section ——— */
-.asobiba__belt {
-  padding-bottom: 5rem;
-}
-
-.asobiba__belt-header {
-  margin-bottom: 2rem;
-}
-
-/* ——— Responsive ——— */
-@media (max-width: 60rem) {
-  .asobiba__cards { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 48rem) {
-  .asobiba__hero-inner {
-    flex-direction: column;
-    text-align: center;
-    min-height: auto;
-    padding-top: 2rem;
+   .asobiba {
+    min-height: 100vh;
+    padding-top: 5rem;
   }
-  .asobiba__sub { max-width: 100%; }
-  .asobiba__cards { grid-template-columns: 1fr; }
-  .asobiba__tanuki img { width: 14rem; }
-  .asobiba__tanuki-emoji { font-size: 6rem; }
-}
+  
+  /* ——— Back button ——— */
+  .asobiba__btn {
+    cursor: pointer;
+    margin-left: 3.75rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+  }
+  
+  /* ——— Hero ——— */
+  .asobiba__hero {
+    padding-bottom: 0;
+    overflow: hidden;
+  }
+  
+  .asobiba__hero-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+    min-height: 70vh;
+  }
+  
+  .asobiba__text {
+    flex: 1;
+    max-width: 34rem;
+  }
+  
+  .asobiba__label {
+    margin-bottom: 1rem;
+    display: block;
+  }
+  
+  .asobiba__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 700;
+    color: var(--blue-dark);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+  }
+  
+  .asobiba__sub {
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--muted);
+    margin-bottom: 2rem;
+    max-width: 28rem;
+  }
+  
+  /* ——— Tanuki wrapper ——— */
+  .asobiba__tanuki {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .asobiba__tanuki-placeholder {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .asobiba__tanuki img {
+    width: 22rem;
+    height: auto;
+    object-fit: contain;
+    display: block;
+  }
+  
+  /* Hammer — overlaps bottom right of tanuki */
+  .asobiba__hardhat {
+    position: absolute;
+    bottom: 0;
+    right: -1rem;
+    font-size: 4rem;
+    display: block;
+    transform-origin: bottom center;
+    line-height: 1;
+  }
+  
+  /* ——— Belt section ——— */
+  .asobiba__belt {
+    padding-bottom: 5rem;
+  }
+  
+  .asobiba__belt-header {
+    margin-bottom: 2rem;
+  }
+  
+  /* ——— Tablet ——— */
+  @media (max-width: 60rem) {
+    .asobiba__hero-inner {
+      gap: 2rem;
+      min-height: 60vh;
+    }
+  
+    .asobiba__tanuki img {
+      width: 16rem;
+    }
+  
+    .asobiba__hardhat {
+      font-size: 3rem;
+      right: -0.5rem;
+    }
+  
+    .asobiba__title {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+    }
+  }
+  
+  /* ——— Mobile ——— */
+  @media (max-width: 48rem) {
+    .asobiba__btn {
+      margin-left: 0.25rem;
+    }
+  
+    .asobiba__hero-inner {
+      flex-direction: column;
+      align-items: flex-start;
+      min-height: auto;
+      padding-top: 1.5rem;
+      padding-bottom: 3rem;
+      gap: 2rem;
+    }
+  
+    .asobiba__text {
+      text-align: left;
+      max-width: 100%;
+    }
+  
+    .asobiba__sub {
+      max-width: 100%;
+    }
+  
+    /* Tanuki stays right-aligned on mobile */
+    .asobiba__tanuki {
+      align-self: flex-end;
+    }
+  
+    .asobiba__tanuki img {
+      width: 12rem;
+    }
+  
+    .asobiba__hardhat {
+      font-size: 2.5rem;
+      right: -0.5rem;
+      bottom: 0;
+    }
+  }

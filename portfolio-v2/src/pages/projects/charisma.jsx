@@ -49,7 +49,7 @@ function Charisma() {
         <div className="container asobiba__hero-inner">
 
           <div className="asobiba__text">
-            <p className="label asobiba__label">Asobiba · 遊び場</p>
+            <p className="label asobiba__label">Project page</p>
             <h1 className="asobiba__title">
               Under<br />Construction.
             </h1>

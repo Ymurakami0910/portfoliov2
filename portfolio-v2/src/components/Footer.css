@@ -184,18 +184,55 @@
   }
 }
 
-/* ——— Mobile ——— */
 @media (max-width: 48rem) {
+
+  .footer {
+    padding-top: 4rem; /* ← add here instead */
+  }
   .footer__main {
-    padding-top: 2rem;
+    align-items: flex-start;
+    gap: 2rem;
+    padding-bottom: 1rem;
+  }
+
+  .footer__col {
+    align-items: flex-start;
+    text-align: left;
+    padding-bottom: 0;
+  }
+
+  .footer__col--right {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .footer__tanuki {
+    order: 999;
+    width: 100%;
+    justify-content: flex-start;
+    /* margin-top: 1rem; */
   }
 
   .footer__tanuki img {
-    height: 18rem;
-    margin-bottom: -2.5rem;
+    margin-top: 0;
+    margin-bottom: -5rem;
   }
 
   .footer__airplane {
     width: 5rem;
+  }
+
+  .footer__bottom {
+    justify-content: flex-start;
+    gap: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .footer__tanuki-note {
+    text-align: left;
+    flex-direction: column;
+    gap: 0.25rem;
   }
 }

@@ -1,35 +1,20 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import './Belt.css';
 
 const ProjectBelt = ({ images }) => {
-  const beltRef = useRef(null);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const beltRef    = useRef(null);
+  const animRef    = useRef(null);
 
-  // Track mobile breakpoint
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  // GSAP scrolling belt — desktop only
-  useEffect(() => {
-    if (isMobile || !beltRef.current) return;
-
     const belt = beltRef.current;
+    if (!belt) return;
 
-    // Wait for images inside the belt to load before calculating width
-    const imgs = Array.from(belt.querySelectorAll('img'));
-    let loaded = 0;
-
-    const startAnimation = () => {
+    const startAnim = () => {
       const beltWidth = belt.scrollWidth / 2;
-
       gsap.killTweensOf(belt);
       gsap.set(belt, { x: 0 });
-
-      const anim = gsap.to(belt, {
+      animRef.current = gsap.to(belt, {
         x: -beltWidth,
         duration: 30,
         ease: 'linear',
@@ -38,45 +23,73 @@ const ProjectBelt = ({ images }) => {
           x: gsap.utils.unitize(x => parseFloat(x) % beltWidth),
         },
       });
-
-      return anim;
     };
 
-    let anim;
+    const stopAnim = () => {
+      animRef.current?.kill();
+      gsap.set(belt, { x: 0 });
+    };
+
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        startAnim();
+      } else {
+        stopAnim();
+      }
+
+      // Mobile scroll fade-in
+if (window.innerWidth < 768) {
+  const items = belt.querySelectorAll('.project-belt__item');
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+  items.forEach(item => observer.observe(item));
+
+  return () => observer.disconnect();
+}
+    };
+
+    // Wait for images to load then start
+    const imgs = Array.from(belt.querySelectorAll('img'));
+    let loaded = 0;
+
+    const onLoad = () => {
+      loaded++;
+      if (loaded >= imgs.length) handleResize();
+    };
 
     if (imgs.length === 0) {
-      anim = startAnimation();
+      handleResize();
     } else {
-      const onLoad = () => {
-        loaded++;
-        if (loaded >= imgs.length) anim = startAnimation();
-      };
       imgs.forEach(img => {
         if (img.complete) onLoad();
-        else { img.addEventListener('load', onLoad); img.addEventListener('error', onLoad); }
+        else {
+          img.addEventListener('load', onLoad);
+          img.addEventListener('error', onLoad);
+        }
       });
     }
 
-    return () => {
-      anim?.kill();
-      imgs.forEach(img => {
-        img.removeEventListener('load', () => {});
-        img.removeEventListener('error', () => {});
-      });
-    };
-  }, [isMobile, images]);
+    window.addEventListener('resize', handleResize);
 
-  // Desktop: duplicate images for seamless loop
-  const rendered = isMobile ? images : [...images, ...images];
+    return () => {
+      animRef.current?.kill();
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [images]);
 
   return (
-    <section className={`project-belt ${isMobile ? 'project-belt--mobile' : 'project-belt--desktop'}`}>
-      <div
-        className="project-belt__track"
-        ref={beltRef}
-        style={{ flexDirection: isMobile ? 'column' : 'row' }}
-      >
-        {rendered.map((src, i) => (
+    <section className="project-belt">
+      <div className="project-belt__track" ref={beltRef}>
+        {[...images, ...images].map((src, i) => (
           <div className="project-belt__item" key={`${src}-${i}`}>
             <img src={src} alt={`belt-${i}`} />
           </div>
