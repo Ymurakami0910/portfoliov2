@@ -137,7 +137,7 @@
   }
 
   .project-nav__item.active {
-    border-bottom: 0.125rem solid #D94F7A;
+    border-bottom: 0.125rem solid var(--pink);
     border-radius: 0;
     background: none;
   }
