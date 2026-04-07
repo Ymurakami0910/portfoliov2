@@ -3,8 +3,9 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ContactForm from '../components/ContactForm';
 import AboutNav from '../components/AboutNav';
-import StepIcon from '../assets/step.svg';
+import Snow from '../components/Snow';
 import './About.css';
+
 
 // ─── Timeline data ────────────────────────────────────────────────────────────
 const TIMELINE = [
@@ -100,7 +101,11 @@ function Sticker({ src, label, rotate = 0, size = 150 }) {
   }, [rotate]);
 
   return (
-    <div ref={ref} className="sticker" style={{ '--rotate': `${rotate}deg`, '--size': `${size}px` }}>
+    <div
+      ref={ref}
+      className="sticker"
+      style={{ '--rotate': `${rotate}deg`, '--size': `${size}px` }}
+    >
       <div className={`sticker__frame ${!src ? 'sticker__frame--empty' : ''}`}>
         {src ? (
           <img src={src} alt={label} className="sticker__img" />
@@ -149,7 +154,7 @@ function Timeline({ items }) {
   const itemRefs = useRef([]);
   const barFillRef = useRef(null);
 
-  // Scroll spy — whichever item enters the viewport center becomes active
+  // Scroll spy
   useEffect(() => {
     const observers = items.map((_, i) => {
       const el = itemRefs.current[i];
@@ -164,7 +169,7 @@ function Timeline({ items }) {
     return () => observers.forEach(o => o?.disconnect());
   }, [items]);
 
-  // Animate bar fill height as user scrolls through items
+  // Grow bar fill
   useEffect(() => {
     if (!barFillRef.current) return;
     const pct = items.length <= 1 ? 0 : (activeIndex / (items.length - 1)) * 100;
@@ -199,7 +204,7 @@ function Timeline({ items }) {
 
   return (
     <div className="timeline">
-      {/* ── Continuous bar (track + fill) ──────────────────────────────── */}
+      {/* ── Continuous bar ─────────────────────────────────────────────── */}
       <div className="timeline__bar">
         <div className="timeline__bar-track" />
         <div className="timeline__bar-fill" ref={barFillRef} />
@@ -217,17 +222,17 @@ function Timeline({ items }) {
               ref={el => (itemRefs.current[i] = el)}
               className={[
                 'timeline-item',
-                item.highlight  ? 'timeline-item--highlight' : '',
-                isActive        ? 'timeline-item--active'    : '',
-                isPassed        ? 'timeline-item--passed'    : '',
+                item.highlight ? 'timeline-item--highlight' : '',
+                isActive       ? 'timeline-item--active'    : '',
+                isPassed       ? 'timeline-item--passed'    : '',
               ].filter(Boolean).join(' ')}
             >
-              {/* Icon */}
+              {/* Icon: paw (mask) for active/passed, dot for upcoming */}
               <div className="timeline-item__icon">
                 {isPassed || isActive ? (
-                  <img src={StepIcon} alt="" className="timeline-item__paw" />
+                  <div className="timeline-item__paw" />
                 ) : (
-                  <span />
+                  <span className="timeline-item__dot" />
                 )}
               </div>
 
@@ -254,6 +259,7 @@ function Timeline({ items }) {
 // ─── About Page ───────────────────────────────────────────────────────────────
 function About() {
   const heroRef = useRef(null);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   useEffect(() => {
     if (!heroRef.current) return;
@@ -266,6 +272,7 @@ function About() {
 
   return (
     <div className="about">
+
       <AboutNav sections={SECTIONS} />
 
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
@@ -291,10 +298,9 @@ function About() {
       {/* ── Early Roots ───────────────────────────────────────────────────── */}
       <section id="roots" className="about-section">
         <div className="container">
+          <p className="about-section__chapter">Chapter 01</p>
+          <h2 className="about-section__title">Early Roots <span className="about-section__snowflake">❄</span></h2>
 
-            <p className="about-section__chapter">Chapter 01</p>
-            <h2 className="about-section__title">Early Roots</h2>
-          
           <div className="about-roots__grid">
             <FadeBlock delay={0} className="about-roots__card">
               <p className="about-roots__card-tag">Place</p>
@@ -316,68 +322,93 @@ function About() {
       </section>
 
       {/* ── Inspirations ──────────────────────────────────────────────────── */}
-      <section id="inspirations" className="about-section about-section--tinted">
+      <section id="inspirations" className="about-section about-section--inspirations">
         <div className="container">
-          <div>
+          <div className="about-inspirations__split">
+
+          {/* Left — no bg, left padding matches .container */}
+          <div className="about-inspirations__left">
             <p className="about-section__chapter">Chapter 02</p>
-            <h2 className="about-section__title">Inspirations</h2>
+            <h2 className="about-section__title">My inspiration, Peeks of my snow days.</h2>
             <p className="about-section__lead">
-              I was drawn to creators who lived between worlds — the Taisho and Meiji eras,
-              where East and West quietly met. There's something in that collision of aesthetics
-              that feels like home to me.
+              Sapporo's long winters offer plenty of time. All the activities and hobbies I loved were right there.
             </p>
+            <p className="about-inspirations__trinket-text">— and then I collect the trinkets.</p>
           </div>
-          <div className="about-stickers">
-            <Sticker src={null} label="Yumeji Takehisa"  rotate={-4} size={150} />
-            <Sticker src={null} label="Osamu Dazai"      rotate={2}  size={160} />
-            <Sticker src={null} label="Junichi Nakahara" rotate={-2} size={150} />
+
+          {/* Right — dark bg + snow, desktop = lightbox trigger */}
+          <div
+            className="about-inspirations__right"
+            onClick={() => setLightboxOpen(true)}
+            role="button"
+            tabIndex={0}
+            aria-label="Open inspirations gallery"
+            onKeyDown={e => e.key === 'Enter' && setLightboxOpen(true)}
+          >
+            <Snow />
+            <div className="about-inspirations__right-inner">
+              <div className="about-stickers">
+                <Sticker src={null} label="Yumeji Takehisa"  rotate={-4} size={150} />
+                <Sticker src={null} label="Osamu Dazai"      rotate={2}  size={160} />
+                <Sticker src={null} label="Junichi Nakahara" rotate={-2} size={150} />
+              </div>
+              <div className="about-stickers about-stickers--trinkets">
+                <Sticker src={null} label="Trinket 01" rotate={3}  size={120} />
+                <Sticker src={null} label="Trinket 02" rotate={-5} size={130} />
+                <Sticker src={null} label="Trinket 03" rotate={2}  size={120} />
+                <Sticker src={null} label="Trinket 04" rotate={-3} size={130} />
+              </div>
+              <p className="about-inspirations__hint">✦ click to explore</p>
+            </div>
           </div>
-          <FadeBlock className="about-trinket-label">
-            <p>— and then there are the trinkets.</p>
-          </FadeBlock>
-          <div className="about-stickers about-stickers--trinkets">
-            <Sticker src={null} label="Trinket 01" rotate={3}  size={130} />
-            <Sticker src={null} label="Trinket 02" rotate={-5} size={140} />
-            <Sticker src={null} label="Trinket 03" rotate={2}  size={130} />
-            <Sticker src={null} label="Trinket 04" rotate={-3} size={140} />
-          </div>
+
+        </div>
         </div>
       </section>
+
+      {/* ── Inspirations Lightbox — desktop only ──────────────────────────── */}
+      {lightboxOpen && (
+        <div className="insp-lightbox" onClick={() => setLightboxOpen(false)}>
+          <button className="insp-lightbox__close" onClick={() => setLightboxOpen(false)}>×</button>
+          <div className="insp-lightbox__inner" onClick={e => e.stopPropagation()}>
+            <Snow />
+            <div className="insp-lightbox__content">
+              <p className="about-section__chapter insp-lightbox__chapter">My Inspirations</p>
+              <h2 className="insp-lightbox__title">Peeks of my snow days.</h2>
+              <div className="about-stickers" style={{ marginTop: '48px' }}>
+                <Sticker src={null} label="Yumeji Takehisa"  rotate={-4} size={190} />
+                <Sticker src={null} label="Osamu Dazai"      rotate={2}  size={200} />
+                <Sticker src={null} label="Junichi Nakahara" rotate={-2} size={190} />
+              </div>
+              <p className="insp-lightbox__trinket-label">— and then I collect the trinkets.</p>
+              <div className="about-stickers about-stickers--trinkets">
+                <Sticker src={null} label="Trinket 01" rotate={3}  size={155} />
+                <Sticker src={null} label="Trinket 02" rotate={-5} size={165} />
+                <Sticker src={null} label="Trinket 03" rotate={2}  size={155} />
+                <Sticker src={null} label="Trinket 04" rotate={-3} size={165} />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ── Career & Education ────────────────────────────────────────────── */}
       <section id="career" className="about-section">
         <div className="container">
-          <div>
-            <p className="about-section__chapter">Chapter 03</p>
-            <h2 className="about-section__title">Career & Education</h2>
-          </div>
+          <p className="about-section__chapter">Chapter 03</p>
+          <h2 className="about-section__title">Career & Education</h2>
           <Timeline items={TIMELINE} />
         </div>
       </section>
 
-      {/* ── Closing ───────────────────────────────────────────────────────── */}
-      {/* <section className="about-closing">
-        <div className="container">
-          <FadeBlock className="about-closing__inner">
-            <p className="about-section__chapter" style={{ textAlign: 'center' }}>Where it all leads</p>
-            <h2 className="about-closing__line">
-              Every trinket, every border crossed,<br />
-              every detail noticed — it all ends up in the work.
-            </h2>
-            <p className="about-closing__sub">
-              I'm looking for a place where design is taken seriously and culture is part of the brief.
-              If that sounds like your studio, I'd love to talk.
-            </p>
-          </FadeBlock>
-        </div>
-      </section> */}
-
       {/* ── Contact ───────────────────────────────────────────────────────── */}
       <section id="contact" className="about-contact">
-        <div className="container">
+        <Snow />
+        <div className="container about-contact__inner">
           <ContactForm />
         </div>
       </section>
+
     </div>
   );
 }
