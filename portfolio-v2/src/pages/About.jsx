@@ -282,9 +282,7 @@ function About() {
             <p className="about-hero__eyebrow hero-child">Creative Strategist · Brand Designer</p>
             <h1 className="about-hero__name hero-child">Yurino<br />Murakami</h1>
             <p className="about-hero__bio hero-child">
-              I grew up in Sapporo, buried in snow and full of ideas —
-              a designer since kindergarten, chasing beauty across cultures,
-              languages, and the small details most people walk past.
+            Born in Sapporo, raised by snow and long winters spent indoors. I filled those hours sketching, sticking stickers on everything, and chasing every curiosity my family was kind enough to let me follow, which eventually led me across the Pacific Ocean. That endless creativity became the foundation of my work, and still drives everything I make today.
             </p>
           </div>
           <blockquote className="about-hero__quote hero-child">
@@ -333,7 +331,7 @@ function About() {
             <p className="about-section__lead">
               Sapporo's long winters offer plenty of time. All the activities and hobbies I loved were right there.
             </p>
-            <p className="about-inspirations__trinket-text">— and then I collect the trinkets.</p>
+            <p className="about-inspirations__trinket-text">— and ofc I collect the trinkets!</p>
           </div>
 
           {/* Right — dark bg + snow, desktop = lightbox trigger */}
@@ -380,7 +378,7 @@ function About() {
                 <Sticker src={null} label="Osamu Dazai"      rotate={2}  size={200} />
                 <Sticker src={null} label="Junichi Nakahara" rotate={-2} size={190} />
               </div>
-              <p className="insp-lightbox__trinket-label">— and then I collect the trinkets.</p>
+              <p className="insp-lightbox__trinket-label">My trinkets</p>
               <div className="about-stickers about-stickers--trinkets">
                 <Sticker src={null} label="Trinket 01" rotate={3}  size={155} />
                 <Sticker src={null} label="Trinket 02" rotate={-5} size={165} />
