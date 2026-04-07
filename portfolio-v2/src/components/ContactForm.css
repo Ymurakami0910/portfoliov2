@@ -22,6 +22,7 @@
   color: var(--blue-dark);
   margin-bottom: 1rem;
   line-height: 1.1;
+  min-height: 3rem; /* safe fixed height that won't collapse */
 }
 
 .contact-form__sub {

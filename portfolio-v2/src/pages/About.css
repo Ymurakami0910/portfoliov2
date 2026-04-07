@@ -254,58 +254,117 @@
 }
 
 /* ── Timeline ─────────────────────────────── */
-.about-timeline {
-  max-width: 680px;
+.timeline {
+  position: relative;
+  width: 100%;
+  padding-top: 8px;
 }
 
+/* The vertical bar sits to the left of the items */
+.timeline__bar {
+  position: absolute;
+  left: 148px; /* year col (120px) + gap (28px) = 148, centered on icon */
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  pointer-events: none;
+}
+
+.timeline__bar-track {
+  position: absolute;
+  inset: 0;
+  background: var(--blue-line);
+  border-radius: 2px;
+}
+
+.timeline__bar-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%; /* animated by GSAP */
+  background: var(--blue-dark);
+  border-radius: 2px;
+  transition: none; /* GSAP handles this */
+}
+
+.timeline__items {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Each row: year | icon | content */
 .timeline-item {
   display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: 0 28px;
-  padding-bottom: 36px;
+  grid-template-columns: 120px 28px 1fr;
+  gap: 0;
+  padding-bottom: 40px;
+  position: relative;
+}
+
+/* Last item no bottom padding */
+.timeline-item:last-child {
+  padding-bottom: 0;
 }
 
 .timeline-item__year {
   font-family: 'DM Sans', sans-serif;
   font-size: 11px;
   font-weight: 500;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.07em;
   color: var(--muted);
-  padding-top: 5px;
+  padding-top: 4px;
   text-align: right;
+  padding-right: 0;
   line-height: 1.4;
   user-select: none;
+  transition: color 0.3s ease;
 }
 
-.timeline-item--highlight .timeline-item__year {
+.timeline-item--highlight .timeline-item__year,
+.timeline-item--active .timeline-item__year {
   color: var(--blue-dark);
   font-weight: 600;
 }
 
-.timeline-item__body {
-  border-left: 2px solid var(--blue-line);
-  padding-left: 24px;
+/* Icon column — sits on top of the bar */
+.timeline-item__icon {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 2px;
   position: relative;
+  z-index: 2;
 }
 
-.timeline-item--highlight .timeline-item__body {
-  border-left-color: var(--blue-dark);
-}
-
-.timeline-item__dot {
-  position: absolute;
-  left: -6px;
-  top: 7px;
+/* .timeline-item__dot {
+  display: inline-block;
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: var(--surface);
+  background: var(--paper);
   border: 2px solid var(--muted);
+  margin-top: 3px;
+  flex-shrink: 0;
+  transition: border-color 0.3s ease;
+} */
+
+.timeline-item__paw {
+  width: 2.5rem;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.3s ease;
 }
 
-.timeline-item--highlight .timeline-item__dot {
-  background: var(--blue-dark);
-  border-color: var(--blue-dark);
+.timeline-item--active .timeline-item__paw {
+  transform: scale(1.2);
+}
+
+/* Content column */
+.timeline-item__content {
+  padding-left: 3rem;
+  padding-bottom: 4px;
 }
 
 .timeline-item__badge {
@@ -324,11 +383,16 @@
 
 .timeline-item__role {
   font-family: 'Playfair Display', serif;
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--ink);
   line-height: 1.3;
   margin-bottom: 3px;
+  transition: color 0.3s ease;
+}
+
+.timeline-item--active .timeline-item__role {
+  color: var(--blue-dark);
 }
 
 .timeline-item__org {
@@ -344,6 +408,7 @@
   font-size: 0.875rem;
   color: var(--muted);
   line-height: 1.68;
+  margin-top: 6px;
 }
 
 /* ── Closing ──────────────────────────────── */
@@ -401,9 +466,40 @@
     padding: 72px 0;
   }
 
+  /* Mobile timeline — collapse year col, shift bar */
+  .timeline__bar {
+    left: 20px; /* icon col center on mobile */
+  }
+
   .timeline-item {
-    grid-template-columns: 90px 1fr;
-    gap: 0 16px;
+    grid-template-columns: 20px 1fr;
+    gap: 0;
+    padding-bottom: 32px;
+  }
+
+  .timeline-item__year {
+    display: none; /* year moves into content on mobile */
+  }
+
+  .timeline-item__icon {
+    padding-top: 3px;
+  }
+
+  .timeline-item__content {
+    padding-left: 16px;
+  }
+
+  /* Show year inline above role on mobile */
+  .timeline-item__role::before {
+    content: attr(data-year);
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
   }
 
   .about-stickers {
