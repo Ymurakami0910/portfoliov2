@@ -9,6 +9,8 @@ import Cloud2 from "../assets/cloud2.png";
 import ProfileGif from "../assets/video.gif";
 import StepSvg from "../assets/step.svg";
 import MLBThumb from '../assets/mlb/Thumb.jpg'
+import CharismaThumb from "../assets/charisma/Thumb.jpg"
+import ProjectCard from '../components/ProjectCard';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -28,7 +30,7 @@ const projects = [
     date: "Winter 2026",
     title: "Charisma Cafe Rebranding",
     slug: "Charisma-cafe",
-    image: null,
+    image: CharismaThumb,
     color: "#C5C9D9",
   },
 ];
@@ -211,36 +213,9 @@ function Home() {
           </div>
 
           <div className="projects__grid">
-            {projects.map((project, i) => (
-              <div
-                key={project.id}
-                className={`project-card fadeIn project-card--${
-                  i % 2 === 0 ? "tall" : "short"
-                }`}
-                onClick={() => navigate(`${project.slug}`)}
-              >
-                <div
-                  className="project-card__image"
-                  style={{ background: project.color }}
-                >
-                  {project.image ? (
-                    <img src={project.image} alt={project.title} />
-                  ) : (
-                    <div className="project-card__placeholder" />
-                  )}
-                </div>
-
-                <div className="project-card__info">
-                  <div className="project-card__meta">
-                    <span className="label">{project.label}</span>
-                    <span className="label project-card__date">
-                      {project.date}
-                    </span>
-                  </div>
-                  <h3 className="project-card__title">{project.title}</h3>
-                </div>
-              </div>
-            ))}
+          {projects.map((project) => (
+  <ProjectCard key={project.id} {...project} />
+))}
           </div>
         </div>
       </section>

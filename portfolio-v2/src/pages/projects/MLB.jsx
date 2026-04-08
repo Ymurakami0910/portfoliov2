@@ -25,6 +25,8 @@ import Microsite2 from "../../assets/mlb/microsite2.jpg";
 import Microsite3 from "../../assets/mlb/microsite3.jpg";
 import Microsite4 from "../../assets/mlb/microsite4.jpg";
 
+import Social from "../../assets/mlb/Thumb.jpg"
+
 import StoryboardMateo from "../../assets/mlb/storyboard-mateo.png";
 import StoryboardSarah from "../../assets/mlb/storyboard-sarah.png";
 
@@ -115,7 +117,7 @@ const ALL_VISUALS = [
   },
   // 9 — Social ad
   {
-    src: null,
+    src: Social,
     color: "#CCBFB8",
     alt: "Social media ad mockup targeting Connection Seekers",
     caption:
