@@ -58,7 +58,7 @@ const TIMELINE = [
   },
   {
     year: "2024",
-    role: "✦ Moved to Vancouver",
+    role: "Moved to Vancouver",
     org: null,
     desc: null,
     highlight: true,
@@ -305,15 +305,19 @@ function About() {
       <section className="about-hero" ref={heroRef}>
         <div className="container about-hero__inner">
           <div className="about-hero__text">
-          <h1 className="about-hero__name hero-child">
-  <Typewriter
-    words={['Call me Yuri.', 'Creative Strategist.', 'Visual Communicator.']}
-    loop={true}
-    typeSpeed={70}
-    deleteSpeed={40}
-    delaySpeed={2000}
-  />
-</h1>
+            <h1 className="about-hero__name hero-child">
+              <Typewriter
+                words={[
+                  "Call me Yuri.",
+                  "Creative Strategist.",
+                  "Visual Communicator.",
+                ]}
+                loop={true}
+                typeSpeed={70}
+                deleteSpeed={40}
+                delaySpeed={2000}
+              />
+            </h1>
             <p className="about-hero__bio hero-child">
               Born in Sapporo, raised by snow and long winters spent indoors. I
               filled those hours sketching, sticking stickers on everything, and
@@ -323,11 +327,18 @@ function About() {
               drives everything I make today.
             </p>
             <div className="about-hero__bottom hero-child">
-    <p className="about-hero__doodle">Sapporo → Vancouver ✈</p>
-    <button className="about-hero__scroll" onClick={() =>
-      document.getElementById('roots')?.scrollIntoView({ behavior: 'smooth' })
-    }>read my story ↓</button>
-  </div>
+              <p className="about-hero__doodle">Sapporo → Vancouver ✈</p>
+              <button
+                className="about-hero__scroll"
+                onClick={() =>
+                  document
+                    .getElementById("roots")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
+              >
+                read my story ↓
+              </button>
+            </div>
           </div>
           <div className="about-hero__photos hero-child">
             <div className="photo-stack__card photo-stack__card--left">

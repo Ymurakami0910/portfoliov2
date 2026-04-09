@@ -89,7 +89,7 @@
 @media (max-width: 48rem) {
   .project-nav {
     position: fixed;
-    top: 3.75rem; /* just below header */
+    top: 4.5rem; /* just below header */
     left: 0;
     right: 0;
     transform: none;

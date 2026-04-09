@@ -4,8 +4,7 @@
 
 /* ── Hero ─────────────────────────────────── */
 .about-hero {
-  padding: 8rem 0 1rem;
-  border-bottom: 1px solid var(--blue-line);
+  padding: 160px 0 80px; /* was 120px — extra 40px clears the sidenav */
 }
 
 /* ── Hero — 60% text / 40% quote ─────────── */
@@ -644,7 +643,7 @@
 
 .timeline__bar {
   position: absolute;
-  left: 148px; /* year(120px) + icon col center */
+  left: 170px; /* was 148px — extra 8px clears the paw icon */
   top: 0;
   bottom: 0;
   width: 2px;
@@ -762,7 +761,7 @@
 .timeline-item__badge {
   display: inline-block;
   font-family: 'DM Sans', sans-serif;
-  font-size: 10px;
+  font-size: 0.823rem;
   font-weight: 700;
   padding: 2px 8px;
   border-radius: 20px;
@@ -886,7 +885,7 @@
   }
   /* Mobile timeline */
   .timeline__bar {
-    left: 20px;
+    left: 30px;
   }
 
   .timeline-item {

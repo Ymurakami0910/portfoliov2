@@ -102,7 +102,7 @@
   /* Show mobile bar */
   .about-nav__bar {
     position: fixed;
-    top: 3.75rem; /* just below header */
+    top: 4.5rem; /* push down slightly below header */
     left: 0;
     right: 0;
     z-index: 800;
