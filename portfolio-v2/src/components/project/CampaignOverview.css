@@ -371,6 +371,67 @@
 }
 
 @media (max-width: 48rem) {
+  .campaign-overview {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .campaign-overview::after {
+    left: 2.5rem;
+  }
+
+  .co-header {
+    padding-left: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .co-tabs {
+    padding-left: 1.5rem;
+  }
+
+  .co-overview .container,
+  .co-schedule {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* All overview content left-aligned */
+  .co-metrics {
+    grid-template-columns: 1fr;
+    padding-left: 1.5rem;
+  }
+
+  .co-metric {
+    padding: 0.625rem 0.875rem;
+  }
+
+  .co-stages {
+    padding-left: 1.5rem;
+  }
+
+  .co-stage-bar {
+    margin-left: 0 !important;
+    padding: 0.5rem 1rem;
+  }
+
+  .co-stage-bar__logo {
+    height: 3rem;
+  }
+
+  .co-tactics {
+    margin-left: 0 !important;
+  }
+
+  .co-tactics__inner {
+    padding: 0.5rem 0;
+    gap: 0.5rem;
+  }
+
+  .co-tactic-group {
+    padding: 0.5rem 0.75rem;
+    min-width: unset;
+    width: 100%;
+  }
+
   .co-schedule__label-col { min-width: 7rem; font-size: 0.625rem; }
   .co-schedule__month { min-width: 2rem; font-size: 0.5rem; }
   .co-schedule__cell  { min-width: 2rem; }
