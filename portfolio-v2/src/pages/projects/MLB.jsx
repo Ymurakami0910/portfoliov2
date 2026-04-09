@@ -303,7 +303,14 @@ function MLB() {
         </p>
       </ProjectText>
 
-      <CampaignOverview />
+      
+      <VisualGrid
+        items={SOCIAL_ITEMS}
+        allVisuals={ALL_VISUALS}
+        onOpen={openLightbox}
+        caption="Social ad creative targeting Connection Seekers in digital spaces, driving traffic toward the Homebase microsite."
+      />
+
 
 
 
@@ -341,7 +348,7 @@ function MLB() {
           area.
         </p>
       </ProjectText>
-
+          
       <VisualGrid
         items={MICROSITE_ITEMS}
         allVisuals={ALL_VISUALS}
@@ -349,12 +356,7 @@ function MLB() {
         caption="Microsite design system including an interactive city map, tabbed city hub across Scene, Games, and Players, player baseball cards with a flip mechanic, and a personalised email newsletter."
       />
 
-      <VisualGrid
-        items={SOCIAL_ITEMS}
-        allVisuals={ALL_VISUALS}
-        onOpen={openLightbox}
-        caption="Social ad creative targeting Connection Seekers in digital spaces, driving traffic toward the Homebase microsite."
-      />
+  
 
       {/* STAGE 3 */}
       <ProjectText
@@ -400,12 +402,17 @@ function MLB() {
         </p>
       </ProjectText>
 
+
       <VisualGrid
         items={OUTCOME_ITEMS}
         allVisuals={ALL_VISUALS}
         onOpen={openLightbox}
-        caption="Campaign closing visuals — the emotional payoff of the full 18-month strategy."
+        caption="Campaign closing visuals Sarah (GenZ) is at the stadium, the emotional payoff of the full 18-month strategy."
       />
+      
+      <CampaignOverview />
+
+
 
       {/* CREDIBILITY */}
       <section className="mlb-credibility" id="credibility">

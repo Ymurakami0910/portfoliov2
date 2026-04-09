@@ -173,13 +173,13 @@
   font-family: 'DM Sans', sans-serif;
   font-size: 1rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--paper);
   line-height: 1.4;
 }
 
 .rs-stat__note {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.8125rem;
+  font-size: 1rem;
   font-weight: 300;
   color: rgba(255, 255, 255, 0.55);
   line-height: 1.5;
@@ -244,7 +244,14 @@
 
 .rs-competitor__icon {
   font-size: 2.5rem;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--paper);
+  flex-shrink: 0;
+}
+
+.rs-competitor__logo {
+  width:3rem;
+  height:5rem;
+  object-fit: contain;
   flex-shrink: 0;
 }
 
@@ -285,9 +292,9 @@
 
 .rs-competitor__detail {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.8125rem;
+  font-size: 1rem;
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.65);
+  color: var(--paper);
   line-height: 1.5;
 }
 
@@ -339,4 +346,10 @@
   .rs-competitor {
     grid-template-columns: 30% auto 1fr;
   }
+  .rs-competitor__left {
+    display: flex;
+    flex-direction: column;
+
+  }
+  
 }
