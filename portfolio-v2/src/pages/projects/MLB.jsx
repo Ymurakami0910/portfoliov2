@@ -47,132 +47,118 @@ const NAV_SECTIONS = [
 ];
 
 // All visuals — lightbox navigates through ALL of them
+// Visual groups
 const ALL_VISUALS = [
-  // 0 — Report (overview)
+  // 0 — Report
   {
     src: ReportImg,
     color: "#D4CCBF",
     alt: "Hits Home report template, landscape layout",
-    caption:
-      "Custom report template built in Microsoft Word. Our 3 months of work came together, selected as one of the top 11 universities among all submissions.",
+    caption: "Custom report template built in Microsoft Word. Our 3 months of work came together, selected as one of the top 11 universities among all submissions.",
   },
-  // 1,2 — Connection Seekers
+  // 1 — Persona
   {
     src: PersonaImg,
     color: "#C8C0D4",
     alt: "Connection Seekers segment profile visual",
-    caption:
-      "Connection Seeker profile. Approximately 19.32 million Gen Z individuals with no strong sport attachment, scrolling endlessly while quietly experiencing loneliness.",
+    caption: "Connection Seeker profile. Approximately 19.32 million Gen Z individuals with no strong sport attachment, scrolling endlessly while quietly experiencing loneliness.",
   },
+  // 2 — Target
   {
     src: TargetImg,
     color: "#C2BBD0",
     alt: "Connection Seekers loneliness visualisation",
-    caption:
-      "80% of Gen Z report feeling lonely in the past 12 months — more than any other generation, despite being the most digitally connected (GWI, 2024).",
+    caption: "80% of Gen Z report feeling lonely in the past 12 months — more than any other generation, despite being the most digitally connected (GWI, 2024).",
   },
-  // 3,4 — OOH
+    // 3 — Social ad / moved
+    {
+      src: Social,
+      color: "#CCBFB8",
+      alt: "Social media ad mockup targeting Connection Seekers",
+      caption: "Social ad creative targeting Connection Seekers in digital spaces, driving awareness toward the Homebase microsite.",
+    },
+  // 4 — OOH 1
   {
     src: OOH1,
     color: "#C5CAD9",
     alt: "Out-of-home mockup showing baseball breaking through glass on a bus window",
-    caption:
-      "A continuous presence that doesn’t just vanish when people click to another web page (Blindspot, 2025), built to be photographed and shared.",
+    caption: "A continuous presence that doesn't just vanish when people click to another web page (Blindspot, 2025), built to be photographed and shared.",
   },
+  
+  // 5 — OOH 2
   {
     src: OOH2,
     color: "#C0C5D4",
     alt: "Transit interior OOH mockup",
-    caption:
-      "Transit interior. The continuous physical presence extends the campaign into commuter spaces throughout the city.",
+    caption: "Transit interior. The continuous physical presence extends the campaign into commuter spaces throughout the city.",
   },
-  // 5,6,7,8, — Microsite
+  // 6 — Microsite hero
   {
     src: Microsite1,
     color: "#D4C5C0",
     alt: "Hits Home microsite hero — players cropped in baseball shapes with the campaign title",
-    caption:
-      "Microsite hero page. Players from across the league displayed in signature baseball shapes — circle, diamond, and home plate — setting the visual language of the campaign.",
+    caption: "Microsite hero page. Players from across the league displayed in signature baseball shapes — circle, diamond, and home plate — setting the visual language of the campaign.",
   },
+  // 7 — Microsite map
   {
     src: Microsite2,
     color: "#D0C0BB",
     alt: "Interactive USA map showing MLB team locations by state with filter panel",
-    caption:
-      "Major City Map. An interactive USA map lets users filter by MLB team or stadium, with California highlighted showing all four California teams — SF Giants, Dodgers, Angels, and Padres.",
+    caption: "Major City Map. An interactive USA map lets users filter by MLB team or stadium, with California highlighted showing all four California teams — SF Giants, Dodgers, Angels, and Padres.",
   },
+  // 8 — Microsite pub
   {
     src: Microsite3,
     color: "#CCC0D0",
     alt: "Pub search tab showing bar listings alongside a dark city map with baseball pin markers",
-    caption:
-      "Where They Connect. The pub search tab surfaces sports bars showing live MLB games nearby, paired with a real-time city map — each pin marking a place to watch with your city.",
+    caption: "Where They Connect. The pub search tab surfaces sports bars showing live MLB games nearby, paired with a real-time city map — each pin marking a place to watch with your city.",
   },
+  // 9 — Microsite player cards
   {
     src: Microsite4,
     color: "#C8BEC8",
     alt: "Player cards showing all-time legends Tom Glavine and Don Wilson alongside current players Aaron Judge and Paul Skenes",
-    caption:
-      "Players — Past and Present. Baseball cards connect fans to all-time legends from their city alongside current stars born nearby, making the roster feel personal and local.",
+    caption: "Players — Past and Present. Baseball cards connect fans to all-time legends from their city alongside current stars born nearby, making the roster feel personal and local.",
   },
-  // 9 — Social ad
-  {
-    src: Social,
-    color: "#CCBFB8",
-    alt: "Social media ad mockup targeting Connection Seekers",
-    caption:
-      "Social ad creative targeting Connection Seekers in digital spaces, driving awareness toward the Homebase microsite.",
-  },
-  // 10,11 — Storyboards
+
+  // 10 — Storyboard Mateo
   {
     src: StoryboardMateo,
     color: "#1E3A6E",
     alt: "Storyboard for Mateo — 15 panels showing a lonely student discovering baseball through a neighbour",
-    caption:
-      "Storyboard 1: Catch It Live (Mateo). Mateo, alone in his dorm, hears cheers from next door. He knocks. A new friend shows him the microsite, they head to the game together. He never looks back.",
+    caption: "Storyboard 1: Catch It Live (Mateo). Mateo, alone in his dorm, hears cheers from next door. He knocks. A new friend shows him the microsite, they head to the game together. He never looks back.",
   },
+  // 11 — Storyboard Sarah
   {
     src: StoryboardSarah,
     color: "#1A3060",
     alt: "Storyboard for Sarah — 15 panels showing a young woman finding connection through a foul ball moment",
-    caption:
-      "Storyboard 2: Video Hero Ads (Sarah). Sarah wakes up to the same routine. She stumbles across MLB content, goes to a game with a friend, catches a foul ball, and passes the moment on to a child beside her.",
+    caption: "Storyboard 2: Video Hero Ads (Sarah). Sarah wakes up to the same routine. She stumbles across MLB content, goes to a game with a friend, catches a foul ball, and passes the moment on to a child beside her.",
   },
-  // 12, 13 — Outcome final panels
+  // 12 — Outcome 1
   {
     src: Outcome1,
     color: "#1E3A6E",
     alt: "Sarah and friends celebrating at Dodger Stadium, arms raised in the crowd",
-    caption:
-      "The moment the campaign is built for — Connection Seekers at the game, present, loud, and belonging.",
+    caption: "The moment the campaign is built for — Connection Seekers at the game, present, loud, and belonging.",
   },
+  // 13 — Outcome 2
   {
     src: Outcome2,
     color: "#1A3060",
     alt: "Campaign key visual — Sarah at the stadium with Hits Home script overlay",
-    caption:
-      "MLB doesn't just \"Hits Different\" — it Hits Home. The campaign's closing image, used for the final presentation",
+    caption: "MLB doesn't just \"Hits Different\" — it Hits Home. The campaign's closing image, used for the final presentation",
   },
 ];
 
-// Visual groups
-const REPORT_ITEMS = [ALL_VISUALS[0]];
-
-const SEEKER_ITEMS = [ALL_VISUALS[1], ALL_VISUALS[2]];
-
-const OOH_ITEMS = [ALL_VISUALS[3], ALL_VISUALS[4]];
-
-const MICROSITE_ITEMS = [
-  ALL_VISUALS[5],
-  ALL_VISUALS[6],
-  ALL_VISUALS[7],
-  ALL_VISUALS[8],
-];
-const SOCIAL_ITEMS = [ALL_VISUALS[9]];
-
-const STORYBOARD_ITEMS = [ALL_VISUALS[11], ALL_VISUALS[10]];
-
-const OUTCOME_ITEMS = [ALL_VISUALS[12], ALL_VISUALS[13]];
+// ── Visual groups ─────────────────────────────────────────────────────────────
+const REPORT_ITEMS     = [ALL_VISUALS[0]];
+const SEEKER_ITEMS     = [ALL_VISUALS[1], ALL_VISUALS[2]];
+const SOCIAL_ITEMS     = [ALL_VISUALS[3]];
+const OOH_ITEMS        = [ALL_VISUALS[4], ALL_VISUALS[5]];
+const MICROSITE_ITEMS  = [ALL_VISUALS[6], ALL_VISUALS[7], ALL_VISUALS[8], ALL_VISUALS[9]];
+const STORYBOARD_ITEMS = [ALL_VISUALS[10], ALL_VISUALS[11]];
+const OUTCOME_ITEMS    = [ALL_VISUALS[12], ALL_VISUALS[13]];
 
 const LINKEDIN_EMBED = `<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7441914687803473920" height="570" width="504" frameborder="0" allowfullscreen="" title="Embedded post from Erica Halvorsen about the BCITMA AMA Case Competition"></iframe>`;
 
@@ -236,7 +222,7 @@ function MLB() {
       <ProjectText
         id="context"
         label="The Problem"
-        title="Baseball is losing its youngest audience"
+        title="MLB is losing its youngest audience"
       >
         <p>
           Only 35% of Gen Z identify as even casual MLB fans, ranking it fourth
@@ -303,7 +289,7 @@ function MLB() {
         </p>
       </ProjectText>
 
-      
+
       <VisualGrid
         items={SOCIAL_ITEMS}
         allVisuals={ALL_VISUALS}

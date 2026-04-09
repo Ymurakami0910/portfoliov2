@@ -54,6 +54,7 @@ function Footer() {
           <button onClick={() => navigate('/')}>Home</button>
           <button onClick={() => navigate('/asobiba')}>Asobiba</button>
           <button onClick={() => navigate('/about')}>About</button>
+          <button onClick={() => window.open('/portfoliov2/code-of-ethics.pdf', '_blank')}>Code of Ethics</button>
         </div>
 
         {/* Center — Tanuki */}
