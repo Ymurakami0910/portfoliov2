@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Typewriter } from "react-simple-typewriter";
 
+import ProjectLightbox from "../components/project/ProjectLightbox";
 import ContactForm from "../components/ContactForm";
 import AboutNav from "../components/AboutNav";
 import Snow from "../components/Snow";
@@ -14,14 +15,70 @@ import PhotoProfile from "../assets/YURIPROFILE.png";
 
 // ─── Timeline data ────────────────────────────────────────────────────────────
 const TIMELINE = [
-  { year: '2025 – 2026', role: 'Bachelor of Creative Industries', org: 'BCIT (in progress)', desc: null, highlight: false, photo: null },
-  { year: '2026', role: 'Case Team Member', org: 'BCIT Marketing Association', desc: 'Placed 2nd among 110+ universities across the U.S. and Canada in the AMA Collegiate Case Competition. Led visual direction and built a 150+ slide deck for a strategic MLB marketing campaign targeting Gen Z.', highlight: true, photo: null },
-  { year: '2025 – Present', role: 'Photo Lab Specialist', org: 'London Drugs', desc: 'Produced in-Produced in-store promotional displays and large-format print outputs using Adobe Photoshop and Epson printing systems.', highlight: false, photo: null },
-  { year: '2025 – 2026', role: 'Design Assistant', org: 'SMILETECH', desc: 'Developed branding for a Roblox B2B marketplace and designed curriculum materials for a Minecraft-based English learning program.', highlight: false, photo: null },
-  { year: '2024 – 2025', role: 'Diploma, New Media Design & Web Development', org: 'BCIT — With Distinction (90%)', desc: null, highlight: false, photo: null },
-  { year: '2024 – 2025', role: 'Photographer', org: 'Spark CG Society', desc: 'Captured photo and video content for event website and social media.', highlight: false, photo: null },
-  { year: '2024', role: '✦ Moved to Vancouver', org: null, desc: null, highlight: true, photo: null },
-  { year: '2018 – 2023', role: 'Food & Hospitality', org: 'Japan — Sapporo · Chitose · Shiraoi', desc: 'From From restaurants in Sapporo to an airport lounge in Chitose, and assisted cultural event at the National Ainu Museum — these experiences placed me in multicultural environments early on. Serving customers in English, learning Ainu indigenous culture, and working across communities quietly built the cross-cultural awareness that drives my work today.', highlight: false, photo: null },
+  {
+    year: "2025 – 2026",
+    role: "Bachelor of Creative Industries",
+    org: "BCIT (in progress)",
+    desc: null,
+    highlight: false,
+    photo: null,
+  },
+  {
+    year: "2026",
+    role: "Case Team Member",
+    org: "BCIT Marketing Association",
+    desc: "Placed 2nd among 110+ universities across the U.S. and Canada in the AMA Collegiate Case Competition. Led visual direction and built a 150+ slide deck for a strategic MLB marketing campaign targeting Gen Z.",
+    highlight: true,
+    photo: null,
+  },
+  {
+    year: "2025 – Present",
+    role: "Photo Lab Specialist",
+    org: "London Drugs",
+    desc: "Produced in-Produced in-store promotional displays and large-format print outputs using Adobe Photoshop and Epson printing systems.",
+    highlight: false,
+    photo: null,
+  },
+  {
+    year: "2025 – 2026",
+    role: "Design Assistant",
+    org: "SMILETECH",
+    desc: "Developed branding for a Roblox B2B marketplace and designed curriculum materials for a Minecraft-based English learning program.",
+    highlight: false,
+    photo: null,
+  },
+  {
+    year: "2024 – 2025",
+    role: "Diploma, New Media Design & Web Development",
+    org: "BCIT — With Distinction (90%)",
+    desc: null,
+    highlight: false,
+    photo: null,
+  },
+  {
+    year: "2024 – 2025",
+    role: "Photographer",
+    org: "Spark CG Society",
+    desc: "Captured photo and video content for event website and social media.",
+    highlight: false,
+    photo: null,
+  },
+  {
+    year: "2024",
+    role: "✦ Moved to Vancouver",
+    org: null,
+    desc: null,
+    highlight: true,
+    photo: null,
+  },
+  {
+    year: "2018 – 2023",
+    role: "Food & Hospitality",
+    org: "Japan — Sapporo · Chitose · Shiraoi",
+    desc: "From From restaurants in Sapporo to an airport lounge in Chitose, and assisted cultural event at the National Ainu Museum — these experiences placed me in multicultural environments early on. Serving customers in English, learning Ainu indigenous culture, and working across communities quietly built the cross-cultural awareness that drives my work today.",
+    highlight: false,
+    photo: null,
+  },
 ];
 
 // ─── Section nav config ───────────────────────────────────────────────────────
@@ -115,18 +172,21 @@ const X_OFFSETS = [-30, 35, -5, 42, -38, 18, -22, 38];
 
 // ─── Timeline ─────────────────────────────────────────────────────────────────
 function Timeline({ items }) {
-  const [activeIndex,       setActiveIndex]       = useState(0);
-  const [mobilePhotoIndex,  setMobilePhotoIndex]  = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [mobilePhotoIndex, setMobilePhotoIndex] = useState(0);
   const [mobileGalleryOpen, setMobileGalleryOpen] = useState(false);
   const [mobileGalleryDone, setMobileGalleryDone] = useState(false);
-  const [allItemsSeen,      setAllItemsSeen]      = useState(false);
+  const [allItemsSeen, setAllItemsSeen] = useState(false);
   const animatedRef = useRef(new Set());
-  const seenRef     = useRef(false);
+  const seenRef = useRef(false);
 
-  const itemRefs   = useRef([]);
+  const itemRefs = useRef([]);
   const barFillRef = useRef(null);
-  const photoRefs  = useRef([]);
-  const leftRef    = useRef(null);
+  const photoRefs = useRef([]);
+  const leftRef = useRef(null);
+
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
 
   // Scroll spy
   useEffect(() => {
@@ -144,7 +204,7 @@ function Timeline({ items }) {
             }
           }
         },
-        { rootMargin: '-30% 0px -50% 0px', threshold: 0 }
+        { rootMargin: "-30% 0px -50% 0px", threshold: 0 }
       );
       obs.observe(el);
       return obs;
@@ -155,30 +215,44 @@ function Timeline({ items }) {
   // Grow bar fill
   useEffect(() => {
     if (!barFillRef.current) return;
-    const pct = items.length <= 1 ? 0 : (activeIndex / (items.length - 1)) * 100;
+    const pct =
+      items.length <= 1 ? 0 : (activeIndex / (items.length - 1)) * 100;
     gsap.to(barFillRef.current, {
       height: `${pct}%`,
       duration: 0.55,
-      ease: 'power2.out',
+      ease: "power2.out",
     });
   }, [activeIndex, items.length]);
 
   // Desktop — position photo at item's vertical offset, animate in once
   useEffect(() => {
     if (animatedRef.current.has(activeIndex)) return;
-    const itemEl  = itemRefs.current[activeIndex];
+    const itemEl = itemRefs.current[activeIndex];
     const photoEl = photoRefs.current[activeIndex];
-    const leftEl  = leftRef.current;
+    const leftEl = leftRef.current;
     if (!itemEl || !photoEl || !leftEl) return;
     animatedRef.current.add(activeIndex);
-    const itemTop  = itemEl.offsetTop + itemEl.offsetHeight / 2;
-    const xOffset  = X_OFFSETS[activeIndex % X_OFFSETS.length];
+    const itemTop = itemEl.offsetTop + itemEl.offsetHeight / 2;
+    const xOffset = X_OFFSETS[activeIndex % X_OFFSETS.length];
     const rotation = ROTATIONS[activeIndex % ROTATIONS.length];
     gsap.fromTo(
       photoEl,
-      { opacity: 0, y: itemTop - 60, x: xOffset, rotation: rotation - 10, scale: 0.85 },
-      { opacity: 1, y: itemTop - 110, x: xOffset, rotation: rotation, scale: 1,
-        duration: 0.6, ease: 'back.out(1.6)' }
+      {
+        opacity: 0,
+        y: itemTop - 60,
+        x: xOffset,
+        rotation: rotation - 10,
+        scale: 0.85,
+      },
+      {
+        opacity: 1,
+        y: itemTop - 110,
+        x: xOffset,
+        rotation: rotation,
+        scale: 1,
+        duration: 0.6,
+        ease: "back.out(1.6)",
+      }
     );
   }, [activeIndex]);
 
@@ -190,8 +264,15 @@ function Timeline({ items }) {
         el,
         { opacity: 0, x: -20 },
         {
-          opacity: 1, x: 0, duration: 0.65, ease: 'power3.out',
-          scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none reverse' },
+          opacity: 1,
+          x: 0,
+          duration: 0.65,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 88%",
+            toggleActions: "play none none reverse",
+          },
         }
       );
     });
@@ -201,18 +282,20 @@ function Timeline({ items }) {
   useEffect(() => {
     const isMobile = window.innerWidth < 768;
     if (mobileGalleryOpen && isMobile) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     }
-    return () => { document.body.style.overflow = ''; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [mobileGalleryOpen]);
 
   const closeMobileGallery = (e) => {
     e.stopPropagation();
     setMobileGalleryOpen(false);
     setMobilePhotoIndex(0);
-    document.body.style.overflow = '';
+    document.body.style.overflow = "";
   };
 
   const handleMobileTap = () => {
@@ -220,7 +303,7 @@ function Timeline({ items }) {
     if (next >= items.length) {
       setMobileGalleryOpen(false);
       setMobileGalleryDone(true);
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     } else {
       setMobilePhotoIndex(next);
     }
@@ -228,9 +311,15 @@ function Timeline({ items }) {
 
   const reversedItems = [...items].reverse();
 
+  const lightboxItems = items.map((item) => ({
+    src: item.photo || null,
+    color: "#E8EEFF",
+    alt: item.role,
+    caption: [item.role, item.org, item.year].filter(Boolean).join(" · "),
+  }));
+
   return (
     <div className="timeline">
-
       {/* ── LEFT: bar + items ──────────────────────────────────────────── */}
       <div className="timeline__left" ref={leftRef}>
         <div className="timeline__bar">
@@ -245,26 +334,37 @@ function Timeline({ items }) {
             return (
               <div
                 key={i}
-                ref={el => (itemRefs.current[i] = el)}
+                ref={(el) => (itemRefs.current[i] = el)}
                 className={[
-                  'timeline-item',
-                  item.highlight ? 'timeline-item--highlight' : '',
-                  isActive       ? 'timeline-item--active'    : '',
-                  isPassed       ? 'timeline-item--passed'    : '',
-                ].filter(Boolean).join(' ')}
+                  "timeline-item",
+                  item.highlight ? "timeline-item--highlight" : "",
+                  isActive ? "timeline-item--active" : "",
+                  isPassed ? "timeline-item--passed" : "",
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
               >
                 <div className="timeline-item__icon">
-                  {isPassed || isActive
-                    ? <div className="timeline-item__paw" />
-                    : <span className="timeline-item__dot" />
-                  }
+                  {isPassed || isActive ? (
+                    <div className="timeline-item__paw" />
+                  ) : (
+                    <span className="timeline-item__dot" />
+                  )}
                 </div>
                 <div className="timeline-item__year">{item.year}</div>
                 <div className="timeline-item__content">
-                  {item.highlight && <span className="timeline-item__badge">★ Highlight</span>}
-                  <div className="timeline-item__role" data-year={item.year}>{item.role}</div>
-                  {item.org  && <div className="timeline-item__org">{item.org}</div>}
-                  {item.desc && <p className="timeline-item__desc">{item.desc}</p>}
+                  {item.highlight && (
+                    <span className="timeline-item__badge">★ Highlight</span>
+                  )}
+                  <div className="timeline-item__role" data-year={item.year}>
+                    {item.role}
+                  </div>
+                  {item.org && (
+                    <div className="timeline-item__org">{item.org}</div>
+                  )}
+                  {item.desc && (
+                    <p className="timeline-item__desc">{item.desc}</p>
+                  )}
                 </div>
               </div>
             );
@@ -277,14 +377,28 @@ function Timeline({ items }) {
         {items.map((item, i) => (
           <div
             key={i}
-            ref={el => (photoRefs.current[i] = el)}
+            ref={(el) => (photoRefs.current[i] = el)}
             className="timeline__polaroid"
-            style={{ opacity: 0, zIndex: i + 1, pointerEvents: 'none' }}
+            style={{
+              opacity: 0,
+              zIndex: i + 1,
+              pointerEvents: i <= activeIndex ? "auto" : "none",
+              cursor: "pointer",
+            }}
+            onClick={() => {
+              setLightboxIndex(i);
+              setLightboxOpen(true);
+            }}
           >
-            {item.photo
-              ? <img src={item.photo} alt={item.role} className="timeline__polaroid-img" />
-              : <div className="timeline__polaroid-placeholder" />
-            }
+            {item.photo ? (
+              <img
+                src={item.photo}
+                alt={item.role}
+                className="timeline__polaroid-img"
+              />
+            ) : (
+              <div className="timeline__polaroid-placeholder" />
+            )}
           </div>
         ))}
       </div>
@@ -293,25 +407,41 @@ function Timeline({ items }) {
       {mobileGalleryOpen && (
         <div className="timeline__mobile-gallery">
           <div className="timeline__mobile-overlay" onClick={handleMobileTap} />
-          <button className="timeline__mobile-close" onClick={closeMobileGallery}>×</button>
+          <button
+            className="timeline__mobile-close"
+            onClick={closeMobileGallery}
+          >
+            ×
+          </button>
           <div className="timeline__mobile-stack" onClick={handleMobileTap}>
             {reversedItems.map((item, i) => (
               <div
                 key={i}
                 className={[
-                  'timeline__mobile-card',
-                  i === mobilePhotoIndex ? 'active' : '',
-                  i < mobilePhotoIndex  ? 'gone'   : '',
-                ].filter(Boolean).join(' ')}
-                style={{ '--tl-rotate': `${ROTATIONS[i % ROTATIONS.length]}deg` }}
+                  "timeline__mobile-card",
+                  i === mobilePhotoIndex ? "active" : "",
+                  i < mobilePhotoIndex ? "gone" : "",
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
+                style={{
+                  "--tl-rotate": `${ROTATIONS[i % ROTATIONS.length]}deg`,
+                }}
               >
-                {item.photo
-                  ? <img src={item.photo} alt={item.role} className="timeline__polaroid-img" />
-                  : <div className="timeline__polaroid-placeholder" />
-                }
+                {item.photo ? (
+                  <img
+                    src={item.photo}
+                    alt={item.role}
+                    className="timeline__polaroid-img"
+                  />
+                ) : (
+                  <div className="timeline__polaroid-placeholder" />
+                )}
                 <div className="timeline__mobile-caption">
                   <p className="timeline__mobile-role">{item.role}</p>
-                  {item.org && <p className="timeline__mobile-org">{item.org}</p>}
+                  {item.org && (
+                    <p className="timeline__mobile-org">{item.org}</p>
+                  )}
                   <p className="timeline__mobile-year">{item.year}</p>
                 </div>
                 {i === 0 && mobilePhotoIndex === 0 && (
@@ -324,7 +454,9 @@ function Timeline({ items }) {
             {items.map((_, i) => (
               <span
                 key={i}
-                className={`timeline__mobile-dot ${i <= mobilePhotoIndex ? 'active' : ''}`}
+                className={`timeline__mobile-dot ${
+                  i <= mobilePhotoIndex ? "active" : ""
+                }`}
               />
             ))}
           </div>
@@ -344,18 +476,33 @@ function Timeline({ items }) {
             <div
               key={i}
               className="timeline__mobile-pile-card"
-              style={{ '--pile-rotate': `${[-6, 2, -10][i]}deg`, '--pile-z': i }}
+              style={{
+                "--pile-rotate": `${[-6, 2, -10][i]}deg`,
+                "--pile-z": i,
+              }}
             >
-              {item.photo
-                ? <img src={item.photo} alt={item.role} className="timeline__mobile-pile-img" />
-                : <div className="timeline__mobile-pile-placeholder" />
-              }
+              {item.photo ? (
+                <img
+                  src={item.photo}
+                  alt={item.role}
+                  className="timeline__mobile-pile-img"
+                />
+              ) : (
+                <div className="timeline__mobile-pile-placeholder" />
+              )}
             </div>
           ))}
           <span className="timeline__mobile-pile-hint">View photos ↑</span>
         </div>
       )}
 
+      {lightboxOpen && (
+        <ProjectLightbox
+          items={lightboxItems}
+          startIndex={lightboxIndex}
+          onClose={() => setLightboxOpen(false)}
+        />
+      )}
     </div>
   );
 }

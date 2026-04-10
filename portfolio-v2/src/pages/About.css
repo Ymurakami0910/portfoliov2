@@ -656,19 +656,28 @@
   height: 100%;
   min-height: 400px;
   align-self: start;
-  pointer-events: none;
+  pointer-events: auto;
+  margin-left: auto;
+  width: 100%;
 }
-
 .timeline__polaroid {
   position: absolute;
   top: 0;
-  left: 0;
+  right: 0;
+  left: auto;
   width: 180px;
   background: var(--white);
   padding: 8px 8px 32px;
   box-shadow:
     0 4px 20px rgba(30, 67, 151, 0.12),
     0 1px 4px rgba(30, 67, 151, 0.06);
+}
+
+.timeline__polaroid:hover {
+  box-shadow: 0 12px 40px rgba(30, 67, 151, 0.22);
+  opacity: 0.9;
+  cursor: pointer;
+  transition: box-shadow 0.25s ease, opacity 0.25s ease;
 }
 
 .timeline__polaroid-img {
