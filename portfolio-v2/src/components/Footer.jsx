@@ -54,7 +54,7 @@ function Footer() {
           <button onClick={() => navigate('/')}>Home</button>
           <button onClick={() => navigate('/asobiba')}>Asobiba</button>
           <button onClick={() => navigate('/about')}>About</button>
-          <button onClick={() => window.open('/portfoliov2/Code-of-ethics.pdf', '_blank')}>Code of Ethics</button>
+          <button onClick={() => window.open('/portfoliov2/Code-of-ethics.pdf', '_blank')}>↗ Code of Ethics</button>
         </div>
 
         {/* Center — Tanuki */}
@@ -68,6 +68,14 @@ function Footer() {
           <a href="https://www.linkedin.com/in/yurino-murakami-047175318" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           <a href="https://www.instagram.com/lilyzvillage.design/" target="_blank" rel="noopener noreferrer">Instagram</a>
           <button onClick={handleProjectClick}>Email</button>
+          <a
+            href="/portfoliov2/Yurino-Murakami-Resume[Creative].pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="contact-form__link"
+          >
+           ↗ Resume 
+          </a>
         </div>
 
       </div>
