@@ -35,7 +35,7 @@ const ContactForm = () => {
         <h2 className="contact-form__title">
   
           <Typewriter
-            words={["Say Hello", "お気軽にご連絡ください"]}
+            words={["Say Hello.", "お気軽にご連絡ください。"]}
             loop={true}
             typeSpeed={80}
             deleteSpeed={50}
