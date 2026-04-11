@@ -13,6 +13,16 @@ import PhotoSapporo from "../assets/SAPPORO.png";
 import PhotoSnow from "../assets/YURI_SNOW.png";
 import PhotoProfile from "../assets/YURIPROFILE.png";
 
+import Polaroid1 from "../assets/polaroid/BCI.jpg";
+import Polaroid2 from "../assets/polaroid/Case-team.jpg";
+import Polaroid3 from "../assets/polaroid/Londondrugs.jpg";
+import Polaroid4 from "../assets/polaroid/Smile-tech.jpg";
+import Polaroid5 from "../assets/polaroid/Spark.jpg";
+import Polaroid6 from "../assets/polaroid/New-media.jpg";
+import Polaroid7 from "../assets/polaroid/Vancouver.jpg";
+import Polaroid8 from "../assets/polaroid/Airport.jpg";
+import Polaroid9 from "../assets/polaroid/Restaurant.jpg";
+
 // ─── Timeline data ────────────────────────────────────────────────────────────
 const TIMELINE = [
   {
@@ -21,7 +31,7 @@ const TIMELINE = [
     org: "BCIT (in progress)",
     desc: null,
     highlight: false,
-    photo: null,
+    photo: Polaroid1,
   },
   {
     year: "2026",
@@ -29,15 +39,15 @@ const TIMELINE = [
     org: "BCIT Marketing Association",
     desc: "Placed 2nd among 110+ universities across the U.S. and Canada in the AMA Collegiate Case Competition. Led visual direction and built a 150+ slide deck for a strategic MLB marketing campaign targeting Gen Z.",
     highlight: true,
-    photo: null,
+    photo: Polaroid2,
   },
   {
     year: "2025 – Present",
     role: "Photo Lab Specialist",
     org: "London Drugs",
-    desc: "Produced in-Produced in-store promotional displays and large-format print outputs using Adobe Photoshop and Epson printing systems.",
+    desc: "Produced in-store promotional displays and large-format print outputs using Adobe Photoshop and Epson printing systems.",
     highlight: false,
-    photo: null,
+    photo: Polaroid3,
   },
   {
     year: "2025 – 2026",
@@ -45,15 +55,7 @@ const TIMELINE = [
     org: "SMILETECH",
     desc: "Developed branding for a Roblox B2B marketplace and designed curriculum materials for a Minecraft-based English learning program.",
     highlight: false,
-    photo: null,
-  },
-  {
-    year: "2024 – 2025",
-    role: "Diploma, New Media Design & Web Development",
-    org: "BCIT — With Distinction (90%)",
-    desc: null,
-    highlight: false,
-    photo: null,
+    photo: Polaroid4,
   },
   {
     year: "2024 – 2025",
@@ -61,7 +63,15 @@ const TIMELINE = [
     org: "Spark CG Society",
     desc: "Captured photo and video content for event website and social media.",
     highlight: false,
-    photo: null,
+    photo: Polaroid5,
+  },
+  {
+    year: "2024 – 2025",
+    role: "Diploma, New Media Design & Web Development",
+    org: "BCIT — With Distinction (90%)",
+    desc: null,
+    highlight: false,
+    photo: Polaroid6,
   },
   {
     year: "2024",
@@ -69,15 +79,16 @@ const TIMELINE = [
     org: null,
     desc: null,
     highlight: true,
-    photo: null,
+    photo: Polaroid7,
   },
   {
     year: "2018 – 2023",
     role: "Food & Hospitality",
     org: "Japan — Sapporo · Chitose · Shiraoi",
-    desc: "From From restaurants in Sapporo to an airport lounge in Chitose, and assisted cultural event at the National Ainu Museum — these experiences placed me in multicultural environments early on. Serving customers in English, learning Ainu indigenous culture, and working across communities quietly built the cross-cultural awareness that drives my work today.",
+    desc: "As a server and designing hand-drawn POP displays for restaurants, working in an international airport lounge, and assisting at the National Ainu Museum, these years placed me in multicultural spaces early, and quietly built the cross-cultural awareness that runs through everything I make today.",
     highlight: false,
-    photo: null,
+    photo: Polaroid8,
+    photo2: Polaroid9,
   },
 ];
 
@@ -311,12 +322,21 @@ function Timeline({ items }) {
 
   const reversedItems = [...items].reverse();
 
-  const lightboxItems = items.map((item) => ({
-    src: item.photo || null,
-    color: "#E8EEFF",
-    alt: item.role,
-    caption: [item.role, item.org, item.year].filter(Boolean).join(" · "),
-  }));
+  const lightboxItems = items.flatMap((item) => {
+    const base = {
+      color: "#E8EEFF",
+      alt: item.role,
+      caption: [item.role, item.org, item.year].filter(Boolean).join(" · "),
+    };
+    const entries = [{ ...base, src: item.photo || null }];
+    if (item.photo2)
+      entries.push({
+        ...base,
+        src: item.photo2,
+        caption: `${item.role} · ${item.org} · ${item.year}`,
+      });
+    return entries;
+  });
 
   return (
     <div className="timeline">
@@ -390,7 +410,24 @@ function Timeline({ items }) {
               setLightboxOpen(true);
             }}
           >
-            {item.photo ? (
+            {item.photo2 ? (
+              <div className="timeline__polaroid-double">
+                <div className="timeline__polaroid-double__card timeline__polaroid-double__card--1">
+                  <img
+                    src={item.photo}
+                    alt={item.role}
+                    className="timeline__polaroid-img"
+                  />
+                </div>
+                <div className="timeline__polaroid-double__card timeline__polaroid-double__card--2">
+                  <img
+                    src={item.photo2}
+                    alt={item.role}
+                    className="timeline__polaroid-img"
+                  />
+                </div>
+              </div>
+            ) : item.photo ? (
               <img
                 src={item.photo}
                 alt={item.role}
