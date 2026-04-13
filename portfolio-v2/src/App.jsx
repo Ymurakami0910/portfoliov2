@@ -19,7 +19,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 function App() {
   return (
-    <Router basename="/portfoliov2">
+    <Router>
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>

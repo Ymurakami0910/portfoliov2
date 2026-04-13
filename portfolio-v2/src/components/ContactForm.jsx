@@ -64,7 +64,7 @@ const ContactForm = () => {
             Instagram ↗
           </a>
           <a
-            href="/portfoliov2/Yurino-Murakami-Resume[Creative].pdf"
+            href="/Yurino-Murakami-Resume[Creative].pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="contact-form__link"

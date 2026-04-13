@@ -69,7 +69,7 @@ function Footer() {
           <a href="https://www.instagram.com/lilyzvillage.design/" target="_blank" rel="noopener noreferrer">Instagram</a>
           <button onClick={handleProjectClick}>Email</button>
           <a
-            href="/portfoliov2/Yurino-Murakami-Resume[Creative].pdf"
+            href="/Yurino-Murakami-Resume[Creative].pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="contact-form__link"
