@@ -23,6 +23,14 @@ import Polaroid7 from "../assets/polaroid/Vancouver.jpg";
 import Polaroid8 from "../assets/polaroid/Airport.jpg";
 import Polaroid9 from "../assets/polaroid/Restaurant.jpg";
 
+import StickerBunko from "../assets/sticker/Bunko.png";
+import StickerCamera from "../assets/sticker/Camera.png";
+import StickerDoodle from "../assets/sticker/Doodle.png";
+import StickerMom from "../assets/sticker/Mom.png";
+import StickerMusic from "../assets/sticker/Music.png";
+import StickerPostcard from "../assets/sticker/Postcard.png";
+import StickerTea from "../assets/sticker/Tea.png";
+
 // ─── Timeline data ────────────────────────────────────────────────────────────
 const TIMELINE = [
   {
@@ -101,17 +109,29 @@ const SECTIONS = [
 ];
 
 // ─── Sticker ──────────────────────────────────────────────────────────────────
-function Sticker({ src, label, rotate = 0, size = 150 }) {
+function Sticker({
+  src,
+  label,
+  caption,
+  rotate = 0,
+  size = 150,
+  initialX = 0,
+  initialY = 0,
+}) {
   const ref = useRef(null);
+  const isDragging = useRef(false);
+  const dragStart = useRef({ x: 0, y: 0 });
+  const pos = useRef({ x: initialX, y: initialY });
 
   useEffect(() => {
     if (!ref.current) return;
+    gsap.set(ref.current, { x: initialX, y: initialY });
     gsap.fromTo(
       ref.current,
-      { opacity: 0, y: 36, rotation: rotate - 8, scale: 0.82 },
+      { opacity: 0, y: initialY + 36, rotation: rotate - 8, scale: 0.82 },
       {
         opacity: 1,
-        y: 0,
+        y: initialY,
         rotation: rotate,
         scale: 1,
         duration: 0.9,
@@ -123,13 +143,82 @@ function Sticker({ src, label, rotate = 0, size = 150 }) {
         },
       }
     );
-  }, [rotate]);
+  }, [rotate, initialX, initialY]);
+
+  const onMouseDown = (e) => {
+    isDragging.current = true;
+    dragStart.current = {
+      x: e.clientX - pos.current.x,
+      y: e.clientY - pos.current.y,
+    };
+    ref.current.style.zIndex = 999;
+    ref.current.style.cursor = "grabbing";
+    e.preventDefault();
+  };
+
+  const onMouseMove = (e) => {
+    if (!isDragging.current) return;
+    pos.current = {
+      x: e.clientX - dragStart.current.x,
+      y: e.clientY - dragStart.current.y,
+    };
+    gsap.set(ref.current, { x: pos.current.x, y: pos.current.y });
+  };
+
+  const onMouseUp = () => {
+    isDragging.current = false;
+    ref.current.style.cursor = "grab";
+  };
+
+  // Touch support
+  const onTouchStart = (e) => {
+    const touch = e.touches[0];
+    isDragging.current = true;
+    dragStart.current = {
+      x: touch.clientX - pos.current.x,
+      y: touch.clientY - pos.current.y,
+    };
+    ref.current.style.zIndex = 999;
+  };
+
+  const onTouchMove = (e) => {
+    if (!isDragging.current) return;
+    const touch = e.touches[0];
+    pos.current = {
+      x: touch.clientX - dragStart.current.x,
+      y: touch.clientY - dragStart.current.y,
+    };
+    gsap.set(ref.current, { x: pos.current.x, y: pos.current.y });
+    e.preventDefault();
+  };
+
+  const onTouchEnd = () => {
+    isDragging.current = false;
+  };
+
+  useEffect(() => {
+    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("mouseup", onMouseUp);
+    return () => {
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mouseup", onMouseUp);
+    };
+  }, []);
 
   return (
     <div
       ref={ref}
       className="sticker"
-      style={{ "--rotate": `${rotate}deg`, "--size": `${size}px` }}
+      style={{
+        "--rotate": `${rotate}deg`,
+        "--size": `${size}px`,
+        cursor: "grab",
+        userSelect: "none",
+      }}
+      onMouseDown={onMouseDown}
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
     >
       <div className={`sticker__frame ${!src ? "sticker__frame--empty" : ""}`}>
         {src ? (
@@ -141,7 +230,7 @@ function Sticker({ src, label, rotate = 0, size = 150 }) {
           </div>
         )}
       </div>
-      {label && src && <p className="sticker__caption">{label}</p>}
+      {label && src && <p className="sticker__caption">{caption || label}</p>}
     </div>
   );
 }
@@ -689,9 +778,6 @@ function About() {
                 Sapporo's long winters offer plenty of time. All the activities
                 and hobbies I loved were right there.
               </p>
-              <p className="about-inspirations__trinket-text">
-                — and ofc I collect the trinkets!
-              </p>
             </div>
 
             {/* Right — dark bg + snow, desktop = lightbox trigger */}
@@ -705,50 +791,62 @@ function About() {
             >
               <Snow />
               <div className="about-inspirations__right-inner">
-                <div className="about-stickers">
-                  <Sticker
-                    src={null}
-                    label="Yumeji Takehisa"
-                    rotate={-4}
-                    size={150}
-                  />
-                  <Sticker
-                    src={null}
-                    label="Osamu Dazai"
-                    rotate={2}
-                    size={160}
-                  />
-                  <Sticker
-                    src={null}
-                    label="Junichi Nakahara"
-                    rotate={-2}
-                    size={150}
-                  />
-                </div>
                 <div className="about-stickers about-stickers--trinkets">
                   <Sticker
-                    src={null}
-                    label="Trinket 01"
+                    src={StickerBunko}
+                    label="Novels"
                     rotate={3}
-                    size={120}
+                    size={280}
+                    initialX={-60}
+                    initialY={-20}
                   />
                   <Sticker
-                    src={null}
-                    label="Trinket 02"
+                    src={StickerCamera}
+                    label="Camera"
                     rotate={-5}
-                    size={130}
+                    size={260}
+                    initialX={80}
+                    initialY={10}
                   />
                   <Sticker
-                    src={null}
-                    label="Trinket 03"
+                    src={StickerDoodle}
+                    label="Doodle"
                     rotate={2}
-                    size={120}
+                    size={290}
+                    initialX={260}
+                    initialY={-30}
                   />
                   <Sticker
-                    src={null}
-                    label="Trinket 04"
+                    src={StickerMom}
+                    label="Mom"
                     rotate={-3}
-                    size={130}
+                    size={220}
+                    initialX={440}
+                    initialY={0}
+                  />
+                  <Sticker
+                    src={StickerMusic}
+                    label="Music"
+                    rotate={4}
+                    size={300}
+                    initialX={-40}
+                    initialY={200}
+                  />
+                  <Sticker
+                    src={StickerPostcard}
+                    label="Postcard"
+                    rotate={-2}
+                    size={240}
+                    initialX={200}
+                    initialY={220}
+                  />
+                  <Sticker
+                    src={StickerTea}
+                    label="Tea"
+                    rotate={3}
+                    size={260}
+                    initialX={400}
+                    initialY={190}
                   />
                 </div>
                 <p className="about-inspirations__hint">✦ click to explore</p>
@@ -772,33 +870,34 @@ function About() {
             onClick={(e) => e.stopPropagation()}
           >
             <Snow />
-            <div className="insp-lightbox__content">
-              <p className="about-section__chapter insp-lightbox__chapter">
-                My Inspirations
-              </p>
-              <h2 className="insp-lightbox__title">Peeks of my snow days.</h2>
-              <div className="about-stickers" style={{ marginTop: "48px" }}>
-                <Sticker
-                  src={null}
-                  label="Yumeji Takehisa"
-                  rotate={-4}
-                  size={190}
-                />
-                <Sticker src={null} label="Osamu Dazai" rotate={2} size={200} />
-                <Sticker
-                  src={null}
-                  label="Junichi Nakahara"
-                  rotate={-2}
-                  size={190}
-                />
-              </div>
-              <p className="insp-lightbox__trinket-label">My trinkets</p>
-              <div className="about-stickers about-stickers--trinkets">
-                <Sticker src={null} label="Trinket 01" rotate={3} size={155} />
-                <Sticker src={null} label="Trinket 02" rotate={-5} size={165} />
-                <Sticker src={null} label="Trinket 03" rotate={2} size={155} />
-                <Sticker src={null} label="Trinket 04" rotate={-3} size={165} />
-              </div>
+            <div className="about-stickers about-stickers--trinkets">
+              <Sticker
+                src={StickerBunko}
+                label="Novels"
+                rotate={3}
+                size={400}
+              />
+              <Sticker
+                src={StickerCamera}
+                label="Camera"
+                rotate={-5}
+                size={350}
+              />
+              <Sticker
+                src={StickerDoodle}
+                label="Doodle"
+                rotate={2}
+                size={400}
+              />
+              <Sticker src={StickerMom} label="Mom" rotate={-3} size={200} />
+              <Sticker src={StickerMusic} label="Music" rotate={4} size={460} />
+              <Sticker
+                src={StickerPostcard}
+                label="Postcard"
+                rotate={-2}
+                size={450}
+              />
+              <Sticker src={StickerTea} label="Tea" rotate={3} size={300} />
             </div>
           </div>
         </div>
