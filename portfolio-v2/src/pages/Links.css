@@ -1,0 +1,356 @@
+/* ============================================
+   Links.css — /links personal link hub
+   Scoped to .links only. No global overrides.
+   Tokens come from styles/global.css
+   ============================================ */
+
+/* Caveat is used for handwritten accents.
+   If index.html already loads Caveat, delete this line. */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&display=swap');
+
+.links {
+  width: 100%;
+  max-width: 30rem;          /* intentional narrow column on every screen */
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Entrance state — JS resolves these to visible */
+.links-anim { opacity: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .links-anim { opacity: 1; }
+}
+
+/* ──────────────────────────────────────────
+   HERO
+   ────────────────────────────────────────── */
+.links__hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.links__avatar-wrap {
+  position: relative;
+  width: 7rem;
+  height: 7rem;
+  margin-bottom: 1.25rem;
+}
+
+.links__avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--white);
+  border: 0.125rem solid var(--white);
+  box-shadow:
+    0 0 0 0.0625rem rgba(30, 67, 151, 0.18),
+    0 0.5rem 1.25rem rgba(30, 67, 151, 0.14);
+}
+
+/* washi tape over the top of the avatar */
+.links__avatar-tape {
+  position: absolute;
+  top: -0.5rem;
+  left: 50%;
+  width: 3.75rem;
+  height: 1.125rem;
+  background: rgba(202, 121, 151, 0.55);
+  border-radius: 0.125rem;
+  transform: translateX(-50%) rotate(-5deg);
+  z-index: 3;
+}
+
+/* ——— Doodles ——— */
+.links__doodle {
+  position: absolute;
+  pointer-events: none;
+}
+
+.links__doodle--star {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--pink);
+  top: -0.75rem;
+  right: -1.125rem;
+}
+
+.links__doodle--sparkle {
+  width: 1.125rem;
+  height: 1.125rem;
+  color: var(--blue-dark);
+  opacity: 0.5;
+  bottom: 0.25rem;
+  left: -1.5rem;
+}
+
+.links__doodle--arrow {
+  width: 1.75rem;
+  height: auto;
+  color: var(--blue-dark);
+  opacity: 0.35;
+  bottom: -2.5rem;
+  right: -2.25rem;
+  transform: rotate(-10deg);
+}
+
+.links__doodle--squiggle {
+  position: static;
+  display: block;
+  width: 3.5rem;
+  height: auto;
+  margin: 0.375rem auto 0;
+  color: var(--pink);
+  opacity: 0.6;
+}
+
+/* ——— Identity ——— */
+.links__identity { width: 100%; }
+
+.links__name {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--blue-dark);
+  line-height: 1.05;
+}
+
+.links__handle {
+  font-family: 'Caveat', cursive;
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: var(--pink);
+  transform: rotate(-3deg);
+  display: inline-block;
+  margin-top: 0.125rem;
+}
+
+.links__bio {
+  max-width: 21rem;
+  margin: 0.875rem auto 0;
+}
+
+.links__bio-role {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.0625rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--blue-dark);
+  margin-bottom: 0.25rem;
+}
+
+.links__bio-rest {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* ──────────────────────────────────────────
+   LINK CARDS
+   ────────────────────────────────────────── */
+.links__list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  margin: 2.5rem 0 5rem;
+}
+
+.links-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  min-height: 4rem;
+  padding: 1.125rem 1.25rem;
+  background: var(--white);
+  border: 0.0625rem solid rgba(30, 67, 151, 0.18);
+  border-radius: var(--radius);
+  box-shadow: 0.1875rem 0.1875rem 0 rgba(30, 67, 151, 0.1);
+  color: var(--ink);
+  text-align: left;
+  transition: transform 0.18s ease, box-shadow 0.18s ease,
+    background 0.18s ease, border-color 0.18s ease;
+}
+
+.links-card__icon {
+  width: 1.375rem;
+  height: 1.375rem;
+  flex-shrink: 0;
+  color: var(--blue-dark);
+  opacity: 0.7;
+  transition: opacity 0.18s ease;
+}
+
+.links-card__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1875rem;
+}
+
+.links-card__title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--blue-dark);
+}
+
+.links-card__desc {
+  font-size: 0.8125rem;
+  font-weight: 300;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.links-card__cue {
+  font-size: 1.125rem;
+  color: var(--blue-dark);
+  opacity: 0.45;
+  flex-shrink: 0;
+  transition: transform 0.18s ease, opacity 0.18s ease;
+}
+
+/* featured — post-it treatment */
+.links-card--featured {
+  background: var(--yellow);
+  border-color: rgba(202, 121, 151, 0.4);
+  transform: rotate(-0.8deg);
+  margin-bottom: 0.5rem;
+}
+
+.links-card__tape {
+  position: absolute;
+  top: -0.625rem;
+  left: 1.75rem;
+  width: 4.5rem;
+  height: 1.25rem;
+  background: var(--pink);
+  opacity: 0.65;
+  border-radius: 0.125rem;
+  transform: rotate(-3deg);
+}
+
+/* hover — desktop only, so mobile never sticks in a hover state */
+@media (hover: hover) {
+  .links-card:hover {
+    transform: translateY(-0.1875rem);
+    box-shadow: 0.3125rem 0.3125rem 0 rgba(30, 67, 151, 0.16);
+    border-color: rgba(30, 67, 151, 0.35);
+  }
+  .links-card--featured:hover {
+    transform: translateY(-0.1875rem) rotate(-0.8deg);
+    border-color: rgba(202, 121, 151, 0.7);
+  }
+  .links-card:hover .links-card__cue {
+    opacity: 0.9;
+    transform: translateX(0.1875rem);
+  }
+  .links-card:hover .links-card__icon {
+    opacity: 1;
+  }
+}
+
+/* press feedback */
+.links-card:active {
+  transform: translateY(0.0625rem);
+  box-shadow: 0.0625rem 0.0625rem 0 rgba(30, 67, 151, 0.12);
+}
+.links-card--featured:active {
+  transform: translateY(0.0625rem) rotate(-0.8deg);
+}
+
+/* keyboard focus */
+.links-card:focus-visible {
+  outline: 0.1875rem solid var(--pink);
+  outline-offset: 0.25rem;
+}
+
+/* ──────────────────────────────────────────
+   FOOTER
+   ────────────────────────────────────────── */
+.links__footer {
+  width: 100vw;
+  margin-top: auto;            /* pushes the footer down on short screens */
+  overflow: hidden;
+  padding-top: 3rem;
+}
+
+.links__footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.links__footer-note {
+  font-family: 'Caveat', cursive;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--blue-dark);
+  transform: rotate(-2deg);
+}
+
+.links__footer-mark {
+  font-size: 0.75rem;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  color:var(--blue-dark);
+  margin-top: 0.5rem;
+}
+
+.links__tanuki {
+  width: auto;
+  height: 15rem;
+  object-fit: contain;
+  margin-top: 1rem;
+  margin-bottom: -3.5rem;      /* crops the cloud into the bottom edge */
+}
+
+/* ──────────────────────────────────────────
+   TABLET / DESKTOP
+   Content stays narrow on purpose.
+   ────────────────────────────────────────── */
+@media (min-width: 48rem) {
+  .links { padding-top: 4.5rem; }
+
+  .links__avatar-wrap { width: 8rem; height: 8rem; }
+  .links__name { font-size: 2.75rem; }
+  .links__handle { font-size: 1.5rem; }
+  .links__bio { max-width: 24rem; }
+  .links__bio-role { font-size: 1.1875rem; }
+  .links__bio-rest { font-size: 0.9375rem; }
+
+  .links__doodle--star { width: 1.75rem; height: 1.75rem; right: -2rem; }
+  .links__doodle--arrow { width: 2rem; right: -3rem; bottom: -3rem; }
+
+  .links-card { min-height: 4.5rem; padding: 1.25rem 1.5rem; }
+  .links-card__title { font-size: 1.0625rem; }
+
+  .links__list { margin-bottom: 6rem; }
+  .links__tanuki { height: 19rem; margin-bottom: -4.5rem; }
+}
+
+/* ──────────────────────────────────────────
+   REDUCED MOTION
+   ────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .links-card,
+  .links-card__cue,
+  .links-card__icon {
+    transition: none;
+  }
+}

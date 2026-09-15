@@ -1,18 +1,23 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
-import BackToTop from './BackToTop';
+
+// Routes that render without the site chrome (header + footer).
+// /links is the semi-hidden QR-code landing page.
+const BARE_ROUTES = ['/links'];
 
 function Layout() {
+  const { pathname } = useLocation();
+  const isBare = BARE_ROUTES.includes(pathname.replace(/\/+$/, '') || '/');
+
   return (
     <>
-      <Header />
+      {!isBare && <Header />}
       <main>
         <Outlet />
       </main>
-      <Footer />
-      <BackToTop />
+      {!isBare && <Footer />}
     </>
   );
 }

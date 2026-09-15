@@ -10,6 +10,8 @@ import Asobiba from './pages/Asobiba';
 import MLB from './pages/projects/MLB';
 import Charisma from './pages/projects/charisma';
 import About from "./pages/About"
+import Links from './pages/Links';
+
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -26,6 +28,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="asobiba" element={<Asobiba />} />
           <Route path="about" element={<About />} />
+          <Route path="links" element={<Links />} />
           <Route path="mlb" element={<MLB />} />
           <Route path="charisma-cafe" element={<Charisma />} />
         </Route>
