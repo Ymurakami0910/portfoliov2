@@ -65,10 +65,9 @@ const links = [
   {
     id: "ama",
     title: "AMA Case Competition — 2nd Place in North America",
-    description: "View the full MLB case presentation",
+    description: "View the full 150+ slide MLB case study presentation",
     url: AMA_PRESENTATION_URL,
     type: "external",
-    thumb: MlbThumb,
     logos: [
       { src: AmaLogo, alt: "American Marketing Association" },
       { src: MlbLogo, alt: "Major League Baseball" },
@@ -208,15 +207,6 @@ function LinkCard({ link }) {
   const inner = (
     <>
       {link.featured && <span className="links-card__tape" aria-hidden="true" />}
-      {link.thumb && (
-        <img
-          src={link.thumb}
-          alt=""
-          aria-hidden="true"
-          loading="lazy"
-          className="links-card__thumb"
-        />
-      )}
       {Icon && <Icon className="links-card__icon" />}
       <span className="links-card__body">
         <span className="links-card__title">{link.title}</span>
