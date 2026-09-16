@@ -24,7 +24,7 @@ const AMA_PRESENTATION_URL = "https://canva.link/o0ix7nu98em7utq";
 
 /* Email is assembled at runtime so the raw address never sits in the HTML.
    ⚠️ CHECK THESE TWO LINES — your message was missing the @ so I split it here. */
-const EMAIL_USER = "lilyvillage2";
+const EMAIL_USER = "lilyvillage";
 const EMAIL_DOMAIN = "gmail.com";
 
 /* Same EmailJS credentials as ContactForm on the About page */
@@ -65,7 +65,7 @@ const links = [
   {
     id: "ama",
     title: "AMA Case Competition — 2nd Place in North America",
-    description: "View the full 150+ slide MLB case study presentation",
+  description: "View the full 150+ slide MLB case study presentation",
     url: AMA_PRESENTATION_URL,
     type: "external",
     logos: [
